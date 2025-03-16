@@ -1,0 +1,16 @@
+.categoryBox{
+    background-color: #000000;
+    color: #ffffff;
+    border-radius: 10px;
+    cursor: pointer;
+    /* padding: 10px; */
+}
+.categoryBox img{
+    width: 100%;
+    border-radius: 10px 10px 0 0;
+}
+
+.categoryBoxContent{
+    padding: 10px;
+    border-radius: 10px;
+}
