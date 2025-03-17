@@ -56,8 +56,8 @@ const Signin = () => {
   return (
     <>
       <Row className={styles.signinContainer}>
-        <Col span={16} />
-        <Col span={8} className="h-100 bg-light p-4">
+        <Col span={12} />
+        <Col span={12} className="h-100 bg-light p-4">
           <form className="d-flex flex-column" onSubmit={handleSubmit}>
             <CustomInput
               name="email"
