@@ -13,7 +13,7 @@ const CustomFooter = () => {
     >
       <div className="d-flex justify-content-center gap-5">
         <div>
-          <h5 className="fs-4">CUSTOMER CARE</h5>
+          <h5 className="footer-heading">CUSTOMER CARE</h5>
           <ul className="footer-list">
             <li>Home</li>
             <li>Products</li>
@@ -21,7 +21,7 @@ const CustomFooter = () => {
           </ul>
         </div>
         <div>
-          <h5 className="fs-4">INFORMATION</h5>
+          <h5 className="footer-heading">INFORMATION</h5>
           <ul className="footer-list">
             <li>About us</li>
             <li>New Trends</li>

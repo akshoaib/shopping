@@ -56,7 +56,7 @@ const ProductsListing = () => {
         <Col span={24} className="p-2 p-lg-4">
           <ProductSlider products={products} />
         </Col>
-        <Col span={24} className={`p-2 p-lg-4 ${styles.productsListingHeader}`}>
+        <Col span={24} className={` p-lg-4 ${styles.productsListingHeader}`}>
           <ProductCategories
             categories={categories}
             loading={categoryLoading}

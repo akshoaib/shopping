@@ -5,7 +5,7 @@ import { Row, Col } from "antd";
 const ProductsHeader = () => {
   return (
     <div className={styles.productsHeader}>
-      <p>Shiza Pizza</p>
+      <p>Wardrove wave</p>
       <p>
         <IoCartOutline size={30} color="#ffffff" />
       </p>

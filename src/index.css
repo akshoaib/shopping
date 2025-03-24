@@ -18,3 +18,16 @@ padding: 0;
 font-size: 18px;
 
 }
+
+.footer-heading{
+font-size: 24px;
+}
+
+@media screen and (max-width: 768px) {
+  .footer-list li{
+    font-size: 11px;
+  }
+  .footer-heading{
+    font-size: 14px;
+  }
+}

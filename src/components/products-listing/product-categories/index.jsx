@@ -7,7 +7,7 @@ const ProductCategories = ({ loading, categories }) => {
         <ProductCategoriesSkeleton />
       ) : (
         categories?.map((category) => (
-          <div key={category.id} className="p-2">
+          <div key={category.id} className="">
             <div className="p-2 ">
               <img
                 src={category.image}
