@@ -1,8 +1,9 @@
 export const APP_ROUTES = {
   public: {
-    LOGIN: "/login",
-    SIGNUP: "/signup",
     HOME: "/",
+    SIGNUP: "/signup",
+    LOGIN: "/login",
+    CART: "/cart",
   },
 
   private_admin: {

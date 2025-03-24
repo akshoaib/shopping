@@ -1,0 +1,14 @@
+
+.imageContainer{
+    position: relative;
+}
+
+.cartIcon{
+    position: absolute;
+    top: 80%;
+    right: 5%;
+    padding: 5px;
+    border-radius: 50%;
+    cursor: pointer;
+    background-color: white;
+}

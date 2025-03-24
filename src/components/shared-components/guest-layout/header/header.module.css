@@ -1,0 +1,10 @@
+.productsHeader{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    background-color: #000000;
+    color: #ffffff;
+    padding: 20px;
+    
+}

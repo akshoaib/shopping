@@ -54,7 +54,7 @@ const AddCategoryForm = ({ handleGetCategories, onCloseSideDrawer }) => {
           value={values.name}
           onBlur={handleBlur}
           touched={touched.name}
-          label="Email"
+          label="Category"
           placeholder="Enter category name"
           error={errors.name}
         />

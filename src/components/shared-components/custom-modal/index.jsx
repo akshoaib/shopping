@@ -24,23 +24,24 @@ const CustomModal = ({
         onOk={() => {}}
         onCancel={handleCancel}
         width={width}
-        footer={[
-          <Button
-            key="cancel"
-            style={{ color: "#000000", backgroundColor: "#ffffff" }}
-            onClick={handleCancel}
-          >
-            Cancel
-          </Button>,
-          <Button
-            key="submit"
-            style={{ color: "#ffffff", backgroundColor: "#000000" }}
-            type="primary"
-            onClick={handleOk}
-          >
-            Save
-          </Button>,
-        ]}
+        footer={false}
+        // footer={[
+        //   <Button
+        //     key="cancel"
+        //     style={{ color: "#000000", backgroundColor: "#ffffff" }}
+        //     onClick={handleCancel}
+        //   >
+        //     Cancel
+        //   </Button>,
+        //   <Button
+        //     key="submit"
+        //     style={{ color: "#ffffff", backgroundColor: "#000000" }}
+        //     type="primary"
+        //     onClick={handleOk}
+        //   >
+        //     Save
+        //   </Button>,
+        // ]}
       >
         {children}
       </Modal>

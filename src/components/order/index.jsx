@@ -8,7 +8,7 @@ import CustomBadge from "../shared-components/custom-badge";
 import { OrderTypes, PaymentTypes } from "@/constants";
 
 const Order = () => {
-  const { getAllOrders } = useOrder();
+  const { loading, getAllOrders } = useOrder();
   const { categoryId } = useParams();
 
   const [dataState, setDataState] = useState({
@@ -160,6 +160,7 @@ const Order = () => {
         data={data}
         columns={columns}
         handlePageChange={handlePageChange}
+        loading={loading}
       />
     </>
   );
