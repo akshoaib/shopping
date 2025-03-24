@@ -2,8 +2,8 @@ import AppLayout from "@/components/shared-components/AppLayout";
 import { APP_ROUTES } from "@/config/app-routes";
 import CategoryPage from "@/pages/category";
 import OrderPage from "@/pages/order";
-import ProductsPage from "@/pages/product";
-import ProductsListingPage from "@/pages/products-listing";
+import ProductsPage from "@/pages/products";
+import ProductsListingPage from "@/pages/homepage";
 import { Navigate, Route, Routes } from "react-router-dom";
 
 const ProtectedUserRoutes = () => {

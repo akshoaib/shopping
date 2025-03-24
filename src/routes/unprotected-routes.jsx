@@ -1,9 +1,10 @@
 import { Navigate, Route, Routes } from "react-router-dom";
 import { APP_ROUTES } from "../config/app-routes";
 import SigninPage from "../pages/signin";
-import ProductsListingPage from "@/pages/products-listing";
 import CartPage from "@/pages/cart";
 import GuestLayout from "@/components/shared-components/guest-layout";
+import HomePage from "@/pages/homepage";
+import ProductsListingPage from "@/pages/products-listing";
 
 const UnProtectedRoutes = () => {
   const publicRoutes = APP_ROUTES.public;
@@ -11,10 +12,18 @@ const UnProtectedRoutes = () => {
   return (
     <Routes>
       <Route
-        path={publicRoutes.HOME}
+        path={publicRoutes.PRODUCTS_LISTING(":categoryId")}
         element={
           <GuestLayout>
             <ProductsListingPage />
+          </GuestLayout>
+        }
+      />
+      <Route
+        path={publicRoutes.HOME}
+        element={
+          <GuestLayout>
+            <HomePage />
           </GuestLayout>
         }
       />

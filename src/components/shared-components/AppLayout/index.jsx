@@ -35,7 +35,7 @@ const AppLayout = ({ children }) => {
     await persistor.purge();
     dispatch(setLoggedinUser(null));
     dispatch(setToken(null));
-    navigate("/login");
+    navigate("/");
   };
 
   // const [showSideDrawer, setShowSideDrawer] = useState(false);
@@ -91,7 +91,7 @@ const AppLayout = ({ children }) => {
             textAlign: "center",
           }}
         >
-          WardrobeWave ©{new Date().getFullYear()} Created by Ant UED
+          WardrobeWave ©{new Date().getFullYear()}
         </Footer>
       </Layout>
     </Layout>

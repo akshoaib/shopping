@@ -1,6 +1,6 @@
 import { HiOutlineShoppingBag } from "react-icons/hi2";
 import styles from "./product-card.module.css";
-import AddToCartModal from "../add-to-cart-modal";
+import AddToCartModal from "../../homepage/add-to-cart-modal";
 import { useState } from "react";
 import { useSelector } from "react-redux";
 const ProductCard = ({ product }) => {
@@ -29,7 +29,7 @@ const ProductCard = ({ product }) => {
               width={"100%"}
               src={product.images[0]}
               alt={product.name}
-              className="rounded "
+              className="rounded"
             />
             <div
               className={styles.cartIcon}

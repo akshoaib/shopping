@@ -4,11 +4,16 @@ const CustomFooter = () => {
     <Footer
       style={{
         textAlign: "center",
-        top: "100%",
-        position: "sticky",
+        position: "absolute",
+        // minHeight: "60px",
         // top: "100%",
         // bottom: 0,
         // width: "100%",
+        // position: "fixed",
+        left: 0,
+        bottom: 0,
+        width: "100%",
+        // marginTop: "30px",
       }}
     >
       <div className="d-flex justify-content-center gap-5">
@@ -28,7 +33,7 @@ const CustomFooter = () => {
           </ul>
         </div>
       </div>
-      WardrobeWave ©{new Date().getFullYear()} Created by Ant UED
+      WardrobeWave ©{new Date().getFullYear()}
     </Footer>
   );
 };

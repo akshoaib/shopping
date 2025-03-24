@@ -4,6 +4,7 @@ export const APP_ROUTES = {
     SIGNUP: "/signup",
     LOGIN: "/login",
     CART: "/cart",
+    PRODUCTS_LISTING: (categoryId) => `/products-listing/${categoryId}`,
   },
 
   private_admin: {
@@ -17,7 +18,7 @@ export const APP_ROUTES = {
     PRODUCT_LISTING: "/products",
     LOGIN: "/login",
     CATEGORY: "/category",
-    // PRODUCTS: (categoryId) => `/products/${categoryId}`,
+    // PRODUCTS: (categoryId) => `/products/${categoryId}`,s
     ORDERS: "/orders",
   },
 };

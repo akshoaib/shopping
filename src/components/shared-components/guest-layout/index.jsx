@@ -6,6 +6,7 @@ const GuestLayout = ({ children }) => {
     <>
       <Header />
       {children}
+      <div style={{ marginBottom: "200px" }} />
       <CustomFooter />
     </>
   );
