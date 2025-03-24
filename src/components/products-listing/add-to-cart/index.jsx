@@ -2,7 +2,9 @@ import { Col, Row } from "antd";
 import styles from "./add-to-cart.module.css";
 import CustomButton from "@/components/shared-components/custom-button";
 import { useFormik } from "formik";
+import { useState } from "react";
 const AddToCart = ({ product }) => {
+  const [mainImage, setMainImage] = useState(product?.images[0]);
   const { values } = useFormik({
     initialValues: {
       quantity: "1",
@@ -32,7 +34,7 @@ const AddToCart = ({ product }) => {
         <Col xs={24} md={9}>
           <div>
             <img
-              src={product.images[0]}
+              src={mainImage}
               height="100%"
               width="100%"
               className="rounded"
@@ -42,7 +44,7 @@ const AddToCart = ({ product }) => {
             {product?.images?.length > 0 &&
               product?.images?.slice(1, product?.images.length).map((img) => {
                 return (
-                  <div>
+                  <div onClick={() => setMainImage(img)}>
                     <img
                       width={90}
                       height={100}

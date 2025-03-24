@@ -15,5 +15,13 @@
     text-transform: uppercase;
     color: #ffffff;
     letter-spacing: 2px;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);}
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+
+}
+@media screen and (max-width: 768px) {
+    .productsHeader p{
+        font-size: 20px;
+    }
+    
+}
     
