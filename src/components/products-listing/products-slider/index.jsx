@@ -12,7 +12,7 @@ const ProductSlider = ({ products }) => {
       modules={[Pagination, Navigation, Autoplay]}
       spaceBetween={20}
       slidesPerView={1}
-      height={200}
+      // height={100}
       navigation
       pagination={{ clickable: true }}
       autoplay={{ delay: 3000, disableOnInteraction: false }}

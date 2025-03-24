@@ -1,6 +1,9 @@
+import { useNavigate } from "react-router-dom";
 import CustomButton from "../shared-components/custom-button";
+import { APP_ROUTES } from "@/config/app-routes";
 
 const Cart = () => {
+  const navigate = useNavigate();
   return (
     <>
       <p className="text-center text-uppercase fw-bold fs-3">Shopping Cart</p>
@@ -8,7 +11,10 @@ const Cart = () => {
         Your cart is empty
       </p>
       <div className="d-flex justify-content-center my-4">
-        <CustomButton title="Continue shopping" />
+        <CustomButton
+          handleClick={() => navigate(APP_ROUTES.public.CART)}
+          title="Continue shopping"
+        />
       </div>
     </>
   );
