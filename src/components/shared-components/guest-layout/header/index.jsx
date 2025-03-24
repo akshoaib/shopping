@@ -14,13 +14,13 @@ const Header = () => {
         <p>
           <LuLogIn
             role="button"
-            size={25}
+            size={20}
             color="#ffffff"
             onClick={() => navigate(APP_ROUTES.public.LOGIN)}
           />
         </p>
         <p onClick={() => navigate(APP_ROUTES.public.CART)}>
-          <IoCartOutline role="button" size={30} color="#ffffff" />
+          <IoCartOutline role="button" size={25} color="#ffffff" />
         </p>
       </div>
     </div>
