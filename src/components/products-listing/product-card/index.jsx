@@ -2,8 +2,15 @@ import { HiOutlineShoppingBag } from "react-icons/hi2";
 import styles from "./product-card.module.css";
 import AddToCartModal from "../add-to-cart-modal";
 import { useState } from "react";
+import { useSelector } from "react-redux";
 const ProductCard = ({ product }) => {
   const [showAddToCartModal, setShowAddToCartModal] = useState(false);
+  const [showRegisterModal, setShowRegisterModal] = useState(false);
+
+  const token = useSelector((state) => state.auth.token);
+  const user = useSelector((state) => state.auth.loggedInUser);
+
+  console.log({ token }, { user });
 
   const handleCloseAddToCartModal = () => {
     setShowAddToCartModal(false);

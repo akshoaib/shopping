@@ -91,7 +91,7 @@ const AppLayout = ({ children }) => {
             textAlign: "center",
           }}
         >
-          Wardrobe Wave ©{new Date().getFullYear()} Created by Ant UED
+          WardrobeWave ©{new Date().getFullYear()} Created by Ant UED
         </Footer>
       </Layout>
     </Layout>

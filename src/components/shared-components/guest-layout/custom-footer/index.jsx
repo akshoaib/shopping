@@ -28,7 +28,7 @@ const CustomFooter = () => {
           </ul>
         </div>
       </div>
-      Wardrobe wave ©{new Date().getFullYear()} Created by Ant UED
+      WardrobeWave ©{new Date().getFullYear()} Created by Ant UED
     </Footer>
   );
 };

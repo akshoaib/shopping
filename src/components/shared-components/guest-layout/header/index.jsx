@@ -8,7 +8,7 @@ const Header = () => {
 
   return (
     <div className={styles.productsHeader}>
-      <p>Wardrobe wave</p>
+      <p>WardrobeWave</p>
       <p onClick={() => navigate(APP_ROUTES.public.CART)}>
         <IoCartOutline role="button" size={30} color="#ffffff" />
       </p>

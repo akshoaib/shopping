@@ -1,7 +1,31 @@
 import { Col, Row } from "antd";
 import styles from "./add-to-cart.module.css";
 import CustomButton from "@/components/shared-components/custom-button";
+import { useFormik } from "formik";
 const AddToCart = ({ product }) => {
+  const { values } = useFormik({
+    initialValues: {
+      quantity: "1",
+    },
+    enableReinitialize: true,
+    onSubmit: (values) => {
+      console.log({ values });
+      const formData = new FormData();
+
+      formData.append("name", values.name);
+      formData.append("image", values.image[0]);
+      console.log({ formData });
+
+      createCategory(formData, (resp) => {
+        console.log({ resp });
+        handleGetCategories();
+        onCloseSideDrawer();
+      });
+    },
+    // validationSchema: createCategorySchema,
+  });
+  console.log({ values });
+
   return (
     <>
       <Row>
@@ -35,7 +59,11 @@ const AddToCart = ({ product }) => {
           <p className={styles.price}>Rs. {product?.price}</p>
           <div className={`${styles.addToCartContainer} d-flex mb-2`}>
             <button className={styles.addToCartButton}>-</button>
-            <input type="text" className={styles.addToCartInput} />
+            <input
+              value={values.quantity}
+              type="text"
+              className={styles.addToCartInput}
+            />
             <button className={styles.addToCartButton}>+</button>
           </div>
           <div>
