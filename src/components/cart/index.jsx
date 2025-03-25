@@ -1,9 +1,22 @@
 import { useNavigate } from "react-router-dom";
 import CustomButton from "../shared-components/custom-button";
 import { APP_ROUTES } from "@/config/app-routes";
+import useCart from "@/hooks/useCart";
+import { useEffect } from "react";
 
 const Cart = () => {
   const navigate = useNavigate();
+  const { loading, getCart } = useCart();
+
+  const handleGetCart = () => {
+    getCart((resp) => {
+      console.log("my cartttttttttt", resp);
+    });
+  };
+
+  useEffect(() => {
+    handleGetCart();
+  }, []);
   return (
     <>
       <div className="my-5">

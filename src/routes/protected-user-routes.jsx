@@ -1,10 +1,9 @@
-import AppLayout from "@/components/shared-components/AppLayout";
 import { APP_ROUTES } from "@/config/app-routes";
-import CategoryPage from "@/pages/category";
 import OrderPage from "@/pages/order";
-import ProductsPage from "@/pages/products";
 import ProductsListingPage from "@/pages/homepage";
 import { Navigate, Route, Routes } from "react-router-dom";
+import GuestLayout from "@/components/shared-components/guest-layout";
+import CartPage from "@/pages/cart";
 
 const ProtectedUserRoutes = () => {
   const privateRoutes = APP_ROUTES.private_customer;
@@ -13,15 +12,15 @@ const ProtectedUserRoutes = () => {
     <Routes>
       <Route
         path={privateRoutes.LOGIN}
-        element={<Navigate to={privateRoutes.PRODUCT_LISTING} />}
+        element={<Navigate to={privateRoutes.HOME} />}
       />
 
       <Route
-        path={privateRoutes.PRODUCT_LISTING}
+        path={privateRoutes.HOME}
         element={
-          <AppLayout>
+          <GuestLayout>
             <ProductsListingPage />
-          </AppLayout>
+          </GuestLayout>
         }
       />
       {/* <Route
@@ -35,9 +34,17 @@ const ProtectedUserRoutes = () => {
       <Route
         path={privateRoutes.ORDERS}
         element={
-          <AppLayout>
+          <GuestLayout>
             <OrderPage />
-          </AppLayout>
+          </GuestLayout>
+        }
+      />
+      <Route
+        path={privateRoutes.CART}
+        element={
+          <GuestLayout>
+            <CartPage />
+          </GuestLayout>
         }
       />
 

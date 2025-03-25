@@ -1,27 +1,23 @@
-.productsHeader{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 20px;
-    background-color: #000000;
-    color: #ffffff;
-    padding: 20px;
-    
+.productsHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  background-color: #000000;
+  color: #ffffff;
+  padding: 20px;
 }
-.productsHeader p{
-    font-family: "Poppins", sans-serif;
-    font-size: 32px;
-    font-weight: bold;
-    text-transform: uppercase;
-    color: #ffffff;
-    letter-spacing: 2px;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
-
+.productsHeader .headerItem {
+  font-family: "Poppins", sans-serif;
+  font-size: 32px;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: #ffffff;
+  letter-spacing: 2px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
 }
 @media screen and (max-width: 768px) {
-    .productsHeader p{
-        font-size: 20px;
-    }
-    
+  .productsHeader .headerItem {
+    font-size: 20px;
+  }
 }
-    

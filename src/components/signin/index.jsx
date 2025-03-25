@@ -26,6 +26,9 @@ const Signin = () => {
 
       dispatch(setLoggedinUser(resp.user));
       dispatch(setToken(resp.token));
+
+      console.log("runnnningggggggggggggg");
+
       navigate("/");
     });
   };

@@ -3,29 +3,34 @@ import styles from "./add-to-cart.module.css";
 import CustomButton from "@/components/shared-components/custom-button";
 import { useFormik } from "formik";
 import { useState } from "react";
+import { addToCartSchema } from "@/utils/validationSchemas/cart";
+import useCart from "@/hooks/useCart";
 const AddToCart = ({ product }) => {
   const [mainImage, setMainImage] = useState(product?.images[0]);
-  const { values } = useFormik({
-    initialValues: {
-      quantity: "1",
-    },
-    enableReinitialize: true,
-    onSubmit: (values) => {
-      console.log({ values });
-      const formData = new FormData();
 
-      formData.append("name", values.name);
-      formData.append("image", values.image[0]);
-      console.log({ formData });
+  const { addToCart } = useCart();
 
-      createCategory(formData, (resp) => {
-        console.log({ resp });
-        handleGetCategories();
-        onCloseSideDrawer();
-      });
-    },
-    // validationSchema: createCategorySchema,
-  });
+  const { values, handleChange, handleSubmit, errors, touched, setFieldValue } =
+    useFormik({
+      initialValues: {
+        quantity: 1,
+      },
+      enableReinitialize: true,
+      onSubmit: (values) => {
+        console.log({ values });
+        console.log({ product });
+
+        const payload = {
+          quantity: values.quantity,
+          productId: product?._id,
+        };
+
+        addToCart(payload, (resp) => {
+          console.log({ resp });
+        });
+      },
+      validationSchema: addToCartSchema,
+    });
   console.log({ values });
 
   return (
@@ -60,16 +65,33 @@ const AddToCart = ({ product }) => {
           <p className={styles.name}>{product?.name}</p>
           <p className={styles.price}>Rs. {product?.price}</p>
           <div className={`${styles.addToCartContainer} d-flex mb-2`}>
-            <button className={styles.addToCartButton}>-</button>
+            <button
+              onClick={() => setFieldValue("quantity", values.quantity - 1)}
+              className={styles.addToCartButton}
+            >
+              -
+            </button>
             <input
+              name="quantity"
+              onChange={handleChange}
               value={values.quantity}
               type="text"
               className={styles.addToCartInput}
             />
-            <button className={styles.addToCartButton}>+</button>
+            <button
+              onClick={() => {
+                console.log("quantity", values.quantity + 1);
+
+                setFieldValue("quantity", values.quantity + 1);
+              }}
+              className={styles.addToCartButton}
+            >
+              +
+            </button>
           </div>
+          {errors && <p>{errors.quantity}</p>}
           <div>
-            <CustomButton title={"Add to Cart"} />
+            <CustomButton title={"Add to Cart"} handleClick={handleSubmit} />
           </div>
         </Col>
       </Row>
