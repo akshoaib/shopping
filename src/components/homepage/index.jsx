@@ -53,7 +53,7 @@ const Homepage = () => {
   return (
     <>
       <Row>
-        <Col span={24} className="p-2 p-lg-4">
+        {/* <Col span={24} className="p-2 p-lg-4">
           <ProductSlider products={products} />
         </Col>
         <Col span={24} className={`p-lg-4 ${styles.productsListingHeader}`}>
@@ -61,7 +61,7 @@ const Homepage = () => {
             categories={categories}
             loading={categoryLoading}
           />
-        </Col>
+        </Col> */}
         <Col span={24} className="p-2 p-lg-4">
           <Row gutter={[16, 16]} className="mb-4">
             {products.map((product) => {

@@ -6,6 +6,7 @@ import { LuLogIn } from "react-icons/lu";
 import { useDispatch, useSelector } from "react-redux";
 import { persistor } from "@/store";
 import { setLoggedinUser, setToken } from "@/reducers/authSlice";
+import { RiLogoutBoxLine } from "react-icons/ri";
 
 const Header = () => {
   const navigate = useNavigate();
@@ -22,28 +23,36 @@ const Header = () => {
     await persistor.purge();
     dispatch(setLoggedinUser(null));
     dispatch(setToken(null));
+
     navigate("/");
   };
 
   return (
     <div className={styles.productsHeader}>
-      <p>WardrobeWave</p>
+      <p role="button" onClick={() => navigate(APP_ROUTES.public.HOME)}>
+        WardrobeWave
+      </p>
       <div className="d-flex gap-2">
-        {token && (
-          <p className="d-flex justify-content-center align-items-center">
-            <span role="button" onClick={handleLogout} className="text-light">
-              Logout
-            </span>
+        {token ? (
+          <p className={styles.headerItem}>
+            <RiLogoutBoxLine
+              role="button"
+              size={20}
+              color="#ffffff"
+              onClick={handleLogout}
+            />
+          </p>
+        ) : (
+          <p className={styles.headerItem}>
+            <LuLogIn
+              role="button"
+              size={20}
+              color="#ffffff"
+              onClick={() => navigate(APP_ROUTES.public.LOGIN)}
+            />
           </p>
         )}
-        <p className={styles.headerItem}>
-          <LuLogIn
-            role="button"
-            size={20}
-            color="#ffffff"
-            onClick={() => navigate(APP_ROUTES.public.LOGIN)}
-          />
-        </p>
+
         <p
           onClick={() => navigate(APP_ROUTES.public.CART)}
           className={styles.headerItem}

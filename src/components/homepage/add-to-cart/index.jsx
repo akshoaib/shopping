@@ -5,10 +5,14 @@ import { useFormik } from "formik";
 import { useState } from "react";
 import { addToCartSchema } from "@/utils/validationSchemas/cart";
 import useCart from "@/hooks/useCart";
+import CartCard from "@/components/shared-components/cart-card";
+import { useSelector } from "react-redux";
 const AddToCart = ({ product }) => {
   const [mainImage, setMainImage] = useState(product?.images[0]);
 
   const { addToCart } = useCart();
+
+  const token = useSelector((state) => state.auth.token);
 
   const { values, handleChange, handleSubmit, errors, touched, setFieldValue } =
     useFormik({
@@ -17,9 +21,6 @@ const AddToCart = ({ product }) => {
       },
       enableReinitialize: true,
       onSubmit: (values) => {
-        console.log({ values });
-        console.log({ product });
-
         const payload = {
           quantity: values.quantity,
           productId: product?._id,
@@ -35,7 +36,7 @@ const AddToCart = ({ product }) => {
 
   return (
     <>
-      <Row>
+      {/* <Row>
         <Col xs={24} md={9}>
           <div>
             <img
@@ -94,6 +95,42 @@ const AddToCart = ({ product }) => {
             <CustomButton title={"Add to Cart"} handleClick={handleSubmit} />
           </div>
         </Col>
+      </Row> */}
+      <Row>
+        <Col xs={24} md={9}>
+          <div>
+            <img
+              src={mainImage}
+              height="100%"
+              width="100%"
+              className="rounded"
+            />
+          </div>
+          <div className="d-flex gap-1 flex-wrap mt-2">
+            {product?.images?.length > 0 &&
+              product?.images?.slice(1, product?.images.length).map((img) => {
+                return (
+                  <div onClick={() => setMainImage(img)}>
+                    <img
+                      width={90}
+                      height={100}
+                      className="rounded"
+                      src={img}
+                    />
+                  </div>
+                );
+              })}
+          </div>
+        </Col>
+        <CartCard
+          product={product}
+          values={values}
+          handleChange={handleChange}
+          setFieldValue={setFieldValue}
+          handleSubmit={handleSubmit}
+          errors={errors}
+          updatingCart={false}
+        />
       </Row>
     </>
   );
