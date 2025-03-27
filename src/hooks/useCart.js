@@ -59,7 +59,20 @@ const useCart = () => {
     []
   );
 
-  return { loading, addToCart, getCart };
+  const deleteCartItem = useCallback(
+    (productId, handleSuccess) =>
+      createApiCaller(
+        () => CartService.deleteCartItem(productId, token),
+        handleSuccess,
+        false,
+        "",
+        "Unable to add to cart"
+      ),
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    []
+  );
+
+  return { loading, addToCart, getCart, deleteCartItem };
 };
 
 export default useCart;

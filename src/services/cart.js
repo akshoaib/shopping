@@ -18,4 +18,16 @@ CartService.getCart = async (token) => {
   });
 };
 
+CartService.deleteCartItem = async (productId, token) => {
+  return api.put(
+    `${url}/remove-cart-items?productId=${productId}`,
+    {},
+    {
+      headers: {
+        Authorization: ` ${token}`,
+      },
+    }
+  );
+};
+
 export default CartService;

@@ -14,9 +14,12 @@ const CartCard = ({
   errors,
   setFieldValue,
   updatingCart = true,
+  productNumber,
+  handleUpdateCart,
+  handleDeleteCartItem,
 }) => {
   const [mainImage, setMainImage] = useState(product?.images[0]);
-  console.log(product?.images[0]);
+  console.log("sdssdsdd", product);
   const token = useSelector((state) => state.auth.token);
 
   useEffect(() => {
@@ -31,7 +34,17 @@ const CartCard = ({
         <div className="d-flex gap-2">
           <div className={`${styles.addToCartContainer} d-flex mb-2`}>
             <button
-              onClick={() => setFieldValue("quantity", values.quantity - 1)}
+              onClick={() => {
+                if (updatingCart) {
+                  setFieldValue(
+                    `cart.${productNumber}.quantity`,
+                    values.quantity - 1
+                  );
+                  handleUpdateCart(product?._id, -1);
+                } else {
+                  setFieldValue("quantity", values.quantity - 1);
+                }
+              }}
               className={styles.addToCartButton}
             >
               -
@@ -45,9 +58,17 @@ const CartCard = ({
             />
             <button
               onClick={() => {
-                console.log("quantity", values.quantity + 1);
+                console.log("quantity", values.quantity);
 
-                setFieldValue("quantity", values.quantity + 1);
+                if (updatingCart) {
+                  setFieldValue(
+                    `cart.${productNumber}.quantity`,
+                    values.quantity + 1
+                  );
+                  handleUpdateCart(product?._id, 1);
+                } else {
+                  setFieldValue("quantity", values.quantity + 1);
+                }
               }}
               className={styles.addToCartButton}
             >
@@ -56,7 +77,11 @@ const CartCard = ({
           </div>
           {updatingCart && (
             <div>
-              <MdDeleteOutline cursor="pointer" size={20} />
+              <MdDeleteOutline
+                onClick={() => handleDeleteCartItem(product?._id)}
+                cursor="pointer"
+                size={20}
+              />
             </div>
           )}
         </div>

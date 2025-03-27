@@ -14,7 +14,7 @@ const Cart = () => {
   const { loading, getCart } = useCart();
   const token = useSelector((state) => state.auth.token);
   const user = useSelector((state) => state.auth.loggedInUser);
-
+  const { addToCart, deleteCartItem } = useCart();
   const [userCart, setUserCart] = useState({
     cart: [],
     total: 0,
@@ -28,6 +28,23 @@ const Cart = () => {
           total: resp.total,
         });
       }
+    });
+  };
+
+  const handleUpdateCart = (productId, quantity) => {
+    const payload = {
+      quantity: quantity,
+      productId: productId,
+    };
+
+    addToCart(payload, (resp) => {
+      console.log({ resp });
+    });
+  };
+
+  const handleDeleteCartItem = (productId) => {
+    deleteCartItem(productId, (resp) => {
+      console.log({ resp });
     });
   };
 
@@ -45,7 +62,7 @@ const Cart = () => {
     return (
       <>
         <div className="ps-2">
-          <img src={mainImage} height={150} width={100} className="rounded" />
+          {/* <img src={mainImage} height={150} width={100} className="rounded" /> */}
         </div>
         {/* <div className="d-flex gap-1 flex-wrap mt-2">
           {images?.length > 0 &&
@@ -80,22 +97,23 @@ const Cart = () => {
         }) => (
           <>
             {/* <Row> */}
-            {!token && values?.cart?.length === 0 && (
-              <div className="my-5">
-                <p className="text-center text-uppercase fw-bold fs-3">
-                  Shopping Cart
-                </p>
-                <p className="text-center text-uppercase fw-bold fs-1 mt-5">
-                  Your cart is empty
-                </p>
-                <div className="d-flex justify-content-center my-4">
-                  <CustomButton
-                    handleClick={() => navigate(APP_ROUTES.public.CART)}
-                    title="Continue shopping"
-                  />
+            {!token ||
+              (values?.cart?.length === 0 && (
+                <div className="my-5">
+                  <p className="text-center text-uppercase fw-bold fs-3">
+                    Shopping Cart
+                  </p>
+                  <p className="text-center text-uppercase fw-bold fs-1 mt-5">
+                    Your cart is empty
+                  </p>
+                  <div className="d-flex justify-content-center my-4">
+                    <CustomButton
+                      handleClick={() => navigate(APP_ROUTES.public.CART)}
+                      title="Continue shopping"
+                    />
+                  </div>
                 </div>
-              </div>
-            )}
+              ))}
 
             <div>
               <FieldArray name="pricing">
@@ -130,6 +148,9 @@ const Cart = () => {
                                 errors.cart[index]) ||
                               {}
                             }
+                            productNumber={index}
+                            handleUpdateCart={handleUpdateCart}
+                            handleDeleteCartItem={handleDeleteCartItem}
                           />
                         </Row>
                       ))}

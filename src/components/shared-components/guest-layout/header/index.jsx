@@ -28,39 +28,41 @@ const Header = () => {
   };
 
   return (
-    <div className={styles.productsHeader}>
-      <p role="button" onClick={() => navigate(APP_ROUTES.public.HOME)}>
-        WardrobeWave
-      </p>
-      <div className="d-flex gap-2">
-        {token ? (
-          <p className={styles.headerItem}>
-            <RiLogoutBoxLine
-              role="button"
-              size={20}
-              color="#ffffff"
-              onClick={handleLogout}
-            />
-          </p>
-        ) : (
-          <p className={styles.headerItem}>
-            <LuLogIn
-              role="button"
-              size={20}
-              color="#ffffff"
-              onClick={() => navigate(APP_ROUTES.public.LOGIN)}
-            />
-          </p>
-        )}
-
-        <p
-          onClick={() => navigate(APP_ROUTES.public.CART)}
-          className={styles.headerItem}
-        >
-          <IoCartOutline role="button" size={25} color="#ffffff" />
+    <>
+      <div className={styles.productsHeader}>
+        <p role="button" onClick={() => navigate(APP_ROUTES.public.HOME)}>
+          WardrobeWave
         </p>
+        <div className="d-flex gap-2">
+          {token ? (
+            <p className={styles.headerItem}>
+              <RiLogoutBoxLine
+                role="button"
+                size={20}
+                color="#ffffff"
+                onClick={handleLogout}
+              />
+            </p>
+          ) : (
+            <p className={styles.headerItem}>
+              <LuLogIn
+                role="button"
+                size={20}
+                color="#ffffff"
+                onClick={() => navigate(APP_ROUTES.public.LOGIN)}
+              />
+            </p>
+          )}
+
+          <p
+            onClick={() => navigate(APP_ROUTES.public.CART)}
+            className={styles.headerItem}
+          >
+            <IoCartOutline role="button" size={25} color="#ffffff" />
+          </p>
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 
