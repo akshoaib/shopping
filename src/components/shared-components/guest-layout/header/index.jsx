@@ -15,10 +15,6 @@ const Header = () => {
   const token = useSelector((state) => state.auth.token);
   const user = useSelector((state) => state.auth.loggedInUser);
 
-  console.log("sssfsf", token);
-
-  console.log({ user });
-
   const handleLogout = async () => {
     await persistor.purge();
     dispatch(setLoggedinUser(null));

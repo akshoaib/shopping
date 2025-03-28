@@ -19,7 +19,6 @@ const CartCard = ({
   handleDeleteCartItem,
 }) => {
   const [mainImage, setMainImage] = useState(product?.images[0]);
-  console.log("sdssdsdd", product);
   const token = useSelector((state) => state.auth.token);
 
   useEffect(() => {

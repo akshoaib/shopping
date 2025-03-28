@@ -25,12 +25,12 @@ const ProductCard = ({ product }) => {
       <div className="rouned-5">
         <div className="d-flex flex-column justify-content-between">
           <div className={styles.imageContainer}>
-            {/* <img
+            <img
               width={"100%"}
               src={product.images[0]}
               alt={product.name}
               className="rounded"
-            /> */}
+            />
             <div
               className={styles.cartIcon}
               onClick={() => setShowAddToCartModal(true)}

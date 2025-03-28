@@ -62,9 +62,9 @@ const Cart = () => {
     return (
       <>
         <div className="ps-2">
-          {/* <img src={mainImage} height={150} width={100} className="rounded" /> */}
+          <img src={mainImage} height={150} width={100} className="rounded" />
         </div>
-        {/* <div className="d-flex gap-1 flex-wrap mt-2">
+        {/* <div className="d-flex gap-1 flex-wrap mt-2 border">
           {images?.length > 0 &&
             images?.slice(1, images.length).map((img) => {
               return (
@@ -176,13 +176,9 @@ const Cart = () => {
                 </>
               )}
             </div>
-            {/* </Col> */}
-            {/* </Row> */}
           </>
         )}
       </Formik>
-
-      {/*  */}
     </>
   );
 };
