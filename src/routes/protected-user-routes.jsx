@@ -4,6 +4,7 @@ import ProductsListingPage from "@/pages/homepage";
 import { Navigate, Route, Routes } from "react-router-dom";
 import GuestLayout from "@/components/shared-components/guest-layout";
 import CartPage from "@/pages/cart";
+import CheckoutPage from "@/pages/checkout";
 
 const ProtectedUserRoutes = () => {
   const privateRoutes = APP_ROUTES.private_customer;
@@ -44,6 +45,14 @@ const ProtectedUserRoutes = () => {
         element={
           <GuestLayout>
             <CartPage />
+          </GuestLayout>
+        }
+      />
+      <Route
+        path={privateRoutes.CHECKOUT}
+        element={
+          <GuestLayout>
+            <CheckoutPage />
           </GuestLayout>
         }
       />

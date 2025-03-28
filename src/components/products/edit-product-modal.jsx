@@ -11,6 +11,8 @@ import { isValidUrl } from "@/utils";
 import { editProductSchema } from "@/utils/validationSchemas/product";
 import useProduct from "@/hooks/useProduct";
 import { Col, Row } from "antd";
+import FooterButtons from "../shared-components/footer-btns";
+import LoaderButton from "../shared-components/loader-button";
 
 const EditProductModal = ({
   isModalOpen,
@@ -20,30 +22,28 @@ const EditProductModal = ({
   setDataState,
 }) => {
   const { getCategoryDropdown } = useCategory();
-  const { updateProduct } = useProduct();
+  const { loading, updateProduct } = useProduct();
 
   const [categories, setCategories] = useState([]);
 
   const handleGetCategoryDropdown = () => {
     getCategoryDropdown((resp) => {
-      console.log({ resp });
       setCategories(resp);
     });
   };
-
-  console.log({ selectedProduct });
 
   const {
     values,
     handleChange,
     handleSubmit,
+    handleReset,
     errors,
     touched,
     handleBlur,
-    setFieldValue,
   } = useFormik({
     initialValues: {
       name: selectedProduct?.name || "",
+      description: selectedProduct?.description || "",
       price: selectedProduct?.price || "",
       quantity: selectedProduct?.quantity || "",
       category: selectedProduct?.category || "",
@@ -52,12 +52,6 @@ const EditProductModal = ({
     enableReinitialize: true,
     onSubmit: (values) => {
       const formData = new FormData();
-      // formData.append("name", values.name);
-      // formData.append("price", values.price);
-      // formData.append("quantity", values.quantity);
-      // //   if (values.image instanceof File) {
-      // formData.append("images", values.images);
-      // //   }
 
       for (const key in values) {
         if (key === "images" && values.images?.length > 0) {
@@ -70,16 +64,12 @@ const EditProductModal = ({
       }
 
       updateProduct(selectedProduct?._id, formData, (resp) => {
-        console.log({ resp });
-
         setDataState({ ...dataState });
         handleCloseEditProductModal();
       });
     },
     validationSchema: editProductSchema,
   });
-
-  console.log("dddddddddddd", values);
 
   useEffect(() => {
     handleGetCategoryDropdown();
@@ -149,6 +139,18 @@ const EditProductModal = ({
                 placeholder="Enter product name"
                 error={errors.name}
               />
+
+              <CustomInput
+                name="description"
+                type="text"
+                handleChange={handleChange}
+                value={values.description}
+                onBlur={handleBlur}
+                touched={touched.description}
+                label="Description"
+                placeholder="Enter product description"
+                error={errors.description}
+              />
               <CustomInput
                 name="price"
                 type="text"
@@ -186,6 +188,12 @@ const EditProductModal = ({
               {isValidUrl(values.images) && (
                 <CustomImage width="50%" height={50} src={values.images} />
               )}
+              <FooterButtons
+                title={loading ? <LoaderButton /> : "Save"}
+                handleSubmit={handleSubmit}
+                handleReset={handleReset}
+                disabled={loading}
+              />
             </form>
           </Col>
         </Row>

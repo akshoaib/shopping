@@ -37,6 +37,7 @@ const AddProductForm = ({ handleGetCategories, onCloseSideDrawer }) => {
       name: "",
       price: "",
       quantity: "",
+      description: "",
       category: "",
       images: null,
     },
@@ -100,6 +101,17 @@ const AddProductForm = ({ handleGetCategories, onCloseSideDrawer }) => {
           label="Product Name"
           placeholder="Enter product name"
           error={errors.name}
+        />
+        <CustomInput
+          name="description"
+          type="text"
+          handleChange={handleChange}
+          value={values.description}
+          onBlur={handleBlur}
+          touched={touched.description}
+          label="Description"
+          placeholder="Enter product description"
+          error={errors.description}
         />
         <CustomInput
           name="price"

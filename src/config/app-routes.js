@@ -24,5 +24,6 @@ export const APP_ROUTES = {
     // PRODUCTS: (categoryId) => `/products/${categoryId}`,s
     ORDERS: "/orders",
     CART: "/cart",
+    CHECKOUT: "/checkout",
   },
 };

@@ -1,11 +1,16 @@
 import { Button } from "antd";
 
-const CustomButton = ({ title, handleClick, disabled = false }) => {
+const CustomButton = ({
+  title,
+  handleClick,
+  disabled = false,
+  className = "",
+}) => {
   return (
     <>
       <Button
         disabled={disabled}
-        className=""
+        className={className}
         color="default"
         onClick={handleClick}
       >

@@ -157,6 +157,24 @@ const Cart = () => {
                   </>
                 )}
               </FieldArray>
+              {values.cart && values.cart?.length > 0 && (
+                <>
+                  <Row className="w-100 w-lg-25 justify-content-center flex-column">
+                    <div className="d-flex justify-content-center gap-4 ">
+                      <p>SubTotal:</p>
+                      <p className="fw-bold">{userCart?.total}</p>
+                    </div>
+                    <div className="d-flex ms-1 justify-content-center">
+                      <CustomButton
+                        title="Checkout"
+                        handleClick={() =>
+                          navigate(APP_ROUTES.private_customer.CHECKOUT)
+                        }
+                      />
+                    </div>
+                  </Row>
+                </>
+              )}
             </div>
             {/* </Col> */}
             {/* </Row> */}

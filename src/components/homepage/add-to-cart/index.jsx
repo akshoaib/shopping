@@ -7,7 +7,7 @@ import { addToCartSchema } from "@/utils/validationSchemas/cart";
 import useCart from "@/hooks/useCart";
 import CartCard from "@/components/shared-components/cart-card";
 import { useSelector } from "react-redux";
-const AddToCart = ({ product }) => {
+const AddToCart = ({ product, handleCloseModal }) => {
   const [mainImage, setMainImage] = useState(product?.images[0]);
 
   const { addToCart } = useCart();
@@ -28,6 +28,7 @@ const AddToCart = ({ product }) => {
 
         addToCart(payload, (resp) => {
           console.log({ resp });
+          handleCloseModal();
         });
       },
       validationSchema: addToCartSchema,
