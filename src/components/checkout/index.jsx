@@ -4,7 +4,7 @@ import { useFormik } from "formik";
 import { useEffect, useState } from "react";
 import AddressForm from "./addressForm";
 import { Col, Row } from "antd";
-import AddressRow from "./AddressRow";
+import AddressRow from "./addressRow";
 import CustomButton from "../shared-components/custom-button";
 import styles from "./address.module.css";
 import useCart from "@/hooks/useCart";
