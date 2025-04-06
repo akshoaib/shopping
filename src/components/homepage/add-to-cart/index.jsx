@@ -27,19 +27,17 @@ const AddToCart = ({ product, handleCloseModal }) => {
         };
 
         addToCart(payload, (resp) => {
-          console.log({ resp });
           handleCloseModal();
         });
       },
       validationSchema: addToCartSchema,
     });
-  console.log({ values });
 
   return (
     <>
       <Row>
         <Col xs={24} md={9}>
-          {/* <div>
+          <div>
             <img
               src={mainImage}
               height="100%"
@@ -61,7 +59,7 @@ const AddToCart = ({ product, handleCloseModal }) => {
                   </div>
                 );
               })}
-          </div> */}
+          </div>
         </Col>
         <CartCard
           product={product}

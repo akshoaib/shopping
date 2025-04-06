@@ -56,7 +56,6 @@ const Order = () => {
     setSelectedOrder(order);
     console.log("hryyy:: ", order);
   };
-  console.log({ data });
 
   const handleCloseEditOrderModal = () => {
     setDataState({ ...dataState });

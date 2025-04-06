@@ -37,8 +37,6 @@ const EditOrderModal = ({
     });
   };
 
-  console.log({ selectedOrder });
-
   const { values, handleChange, handleSubmit, errors, touched, handleBlur } =
     useFormik({
       initialValues: {
@@ -53,8 +51,6 @@ const EditOrderModal = ({
           _id: selectedOrder?._id,
         };
         updateOrder(body, (resp) => {
-          console.log({ resp });
-
           setDataState({ ...dataState });
           handleCloseEditOrderModal();
         });

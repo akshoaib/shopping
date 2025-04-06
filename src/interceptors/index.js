@@ -2,8 +2,6 @@ import showToast from "@/utils";
 import axios from "axios";
 
 const handleResponseError = (error) => {
-  console.log({ error });
-
   if (error?.response?.status === 401) {
     // TODO : Add Azure B2C logout function here
     window.location.href = "/";

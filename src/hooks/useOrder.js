@@ -85,12 +85,26 @@ const useOrder = () => {
     []
   );
 
+  const placeOrder = useCallback(
+    (body, handleSuccess) =>
+      createApiCaller(
+        () => OrderService.placeOrder(body, token),
+        handleSuccess,
+        true,
+        "order places",
+        "Unable to place order"
+      ),
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    []
+  );
+
   return {
     loading,
     getAllOrders,
     getOrderStatusDropdown,
     getPaymentStatusDropdown,
     updateOrder,
+    placeOrder,
   };
 };
 

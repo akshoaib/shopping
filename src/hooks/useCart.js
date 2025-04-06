@@ -64,8 +64,8 @@ const useCart = () => {
       createApiCaller(
         () => CartService.deleteCartItem(productId, token),
         handleSuccess,
-        false,
-        "",
+        true,
+        "Item deleted from cart successfully",
         "Unable to add to cart"
       ),
     // eslint-disable-next-line react-hooks/exhaustive-deps

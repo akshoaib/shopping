@@ -19,7 +19,6 @@ const AddProductForm = ({ handleGetCategories, onCloseSideDrawer }) => {
 
   const handleGetCategoryDropdown = () => {
     getCategoryDropdown((resp) => {
-      console.log({ resp });
       setCategories(resp);
     });
   };
@@ -56,7 +55,6 @@ const AddProductForm = ({ handleGetCategories, onCloseSideDrawer }) => {
       }
 
       createProduct(formData, (resp) => {
-        console.log({ resp });
         handleGetCategories();
         onCloseSideDrawer();
       });
@@ -68,15 +66,9 @@ const AddProductForm = ({ handleGetCategories, onCloseSideDrawer }) => {
     setFieldValue("image", e.currentTarget.files[0]);
   };
 
-  console.log({ values });
-
   useEffect(() => {
     handleGetCategoryDropdown();
   }, []);
-
-  console.log({ errors });
-
-  console.log({ values });
 
   return (
     <div>

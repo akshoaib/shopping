@@ -33,4 +33,12 @@ OrderService.updateOrder = async (body, token) => {
     },
   });
 };
+
+OrderService.placeOrder = async (body, token) => {
+  return api.post(`${url}/place-order`, body, {
+    headers: {
+      Authorization: `${token}`,
+    },
+  });
+};
 export default OrderService;

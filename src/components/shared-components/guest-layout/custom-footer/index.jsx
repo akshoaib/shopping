@@ -1,5 +1,8 @@
+import { APP_ROUTES } from "@/config/app-routes";
 import { Footer } from "antd/es/layout/layout";
+import { useNavigate } from "react-router-dom";
 const CustomFooter = () => {
+  const navigate = useNavigate();
   return (
     <Footer
       style={{
@@ -29,7 +32,7 @@ const CustomFooter = () => {
           <h5 className="footer-heading">INFORMATION</h5>
           <ul className="footer-list">
             <li>About us</li>
-            <li>New Trends</li>
+            <li onClick={() => navigate(APP_ROUTES.public.BLOG)}>New Trends</li>
           </ul>
         </div>
       </div>

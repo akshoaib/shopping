@@ -5,6 +5,7 @@ import CartPage from "@/pages/cart";
 import GuestLayout from "@/components/shared-components/guest-layout";
 import HomePage from "@/pages/homepage";
 import ProductsListingPage from "@/pages/products-listing";
+import BlogPage from "@/pages/blog";
 
 const UnProtectedRoutes = () => {
   const publicRoutes = APP_ROUTES.public;
@@ -24,6 +25,14 @@ const UnProtectedRoutes = () => {
         element={
           <GuestLayout>
             <HomePage />
+          </GuestLayout>
+        }
+      />
+      <Route
+        path={publicRoutes.BLOG}
+        element={
+          <GuestLayout>
+            <BlogPage />
           </GuestLayout>
         }
       />

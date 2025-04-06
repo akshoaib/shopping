@@ -16,7 +16,6 @@ const PaginatedTable = ({ data, columns, handlePageChange, loading }) => {
       address: "10 Downing Street",
     },
   ];
-  console.log({ data });
 
   return (
     <>

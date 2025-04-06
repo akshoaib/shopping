@@ -6,6 +6,7 @@ import CartPage from "@/pages/cart";
 import CheckoutPage from "@/pages/checkout";
 import HomePage from "@/pages/homepage";
 import ProductsListingPage from "@/pages/products-listing";
+import BlogPage from "@/pages/blog";
 
 const ProtectedUserRoutes = () => {
   const privateRoutes = APP_ROUTES.private_customer;
@@ -30,6 +31,15 @@ const ProtectedUserRoutes = () => {
         element={
           <GuestLayout>
             <HomePage />
+          </GuestLayout>
+        }
+      />
+
+      <Route
+        path={privateRoutes.BLOG}
+        element={
+          <GuestLayout>
+            <BlogPage />
           </GuestLayout>
         }
       />

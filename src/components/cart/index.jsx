@@ -8,6 +8,7 @@ import { addToCartSchema, cartSchema } from "@/utils/validationSchemas/cart";
 import { Col, Row } from "antd";
 import CartCard from "../shared-components/cart-card";
 import { useSelector } from "react-redux";
+import PageLoader from "../shared-components/page-loader";
 
 const Cart = () => {
   const navigate = useNavigate();
@@ -22,7 +23,9 @@ const Cart = () => {
 
   const handleGetCart = () => {
     getCart((resp) => {
-      if (resp?.cart && resp?.cart?.length > 0) {
+      console.log("cart rfff:", resp);
+
+      if (resp?.cart) {
         setUserCart({
           cart: resp.cart,
           total: resp.total,
@@ -37,14 +40,12 @@ const Cart = () => {
       productId: productId,
     };
 
-    addToCart(payload, (resp) => {
-      console.log({ resp });
-    });
+    addToCart(payload, (resp) => {});
   };
 
   const handleDeleteCartItem = (productId) => {
     deleteCartItem(productId, (resp) => {
-      console.log({ resp });
+      handleGetCart();
     });
   };
 
@@ -77,8 +78,10 @@ const Cart = () => {
       </>
     );
   };
+
   return (
     <>
+      <PageLoader loading={loading} />
       <Formik
         enableReinitialize
         initialValues={{

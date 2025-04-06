@@ -3,17 +3,21 @@ import { createAddressSchema } from "@/utils/validationSchemas/address";
 import { useFormik } from "formik";
 import { useEffect, useState } from "react";
 import AddressForm from "./addressForm";
-import { Row } from "antd";
+import { Col, Row } from "antd";
 import AddressRow from "./AddressRow";
 import CustomButton from "../shared-components/custom-button";
 import styles from "./address.module.css";
 import useCart from "@/hooks/useCart";
 import { useSelector } from "react-redux";
+import OrderSummary from "./orderSummary";
+import PageLoader from "../shared-components/page-loader";
+import useOrder from "@/hooks/useOrder";
 const Checkout = () => {
   const { loading, getAddresses, addAddress, deleteAddress } = useAddress();
+  const { placeOrder } = useOrder();
   const token = useSelector((state) => state.auth.token);
 
-  const { getCart } = useCart();
+  const { loading: cartLoading, getCart } = useCart();
 
   const [userAddresses, setUserAddresses] = useState(null);
   const [showAddressForm, setShowAddressForm] = useState(null);
@@ -94,12 +98,22 @@ const Checkout = () => {
 
   const handleGetCart = () => {
     getCart((resp) => {
-      if (resp?.cart && resp?.cart?.length > 0) {
+      if (resp?.cart) {
         setUserCart({
           cart: resp.cart,
           total: resp.total,
         });
       }
+    });
+  };
+
+  const handlePlaceOrder = () => {
+    let selectedAddress = userAddresses?.filter((item) => item?.selected)[0];
+    let payload = {
+      address: selectedAddress?.addressId,
+    };
+    placeOrder(payload, (resp) => {
+      handleGetCart();
     });
   };
 
@@ -112,73 +126,60 @@ const Checkout = () => {
 
   return (
     <>
-      <Row className="w-75 w-lg-50 mx-auto d-flex flex-column">
-        {userAddresses && userAddresses?.length > 0 && (
-          <>
-            <div>
-              <p className={styles.savedAddressHeader}>
-                Saved Addresses (please select)
-              </p>
-            </div>
-            {userAddresses?.map((item, index) => {
-              return (
-                <AddressRow
-                  key={index}
-                  address={item}
-                  handleSetSelectedAddress={handleSetSelectedAddress}
-                  handleDeleteAddress={handleDeleteAddress}
-                />
-              );
-            })}
-          </>
-        )}
-      </Row>
+      <PageLoader loading={loading || cartLoading} />
 
-      <Row className="w-75 w-lg-50 mx-auto d-flex flex-column">
-        <CustomButton
-          title="Add New address"
-          className="ms-1"
-          handleClick={() => setShowAddressForm(true)}
-        />
-        {showAddressForm && (
-          <>
-            <div>
-              <p className={styles.newAddressHeader}>New Address</p>
-            </div>
-            <AddressForm
-              values={values}
-              handleBlur={handleBlur}
-              touched={touched}
-              handleChange={handleChange}
-              handleSubmit={handleSubmit}
-              errors={errors}
-              loading={loading}
-              handleReset={handleReset}
+      <Row className="px-auto">
+        <Col xs={24} md={7} className="mx-auto">
+          {userAddresses && userAddresses?.length > 0 && (
+            <>
+              <div>
+                <p className={styles.savedAddressHeader}>
+                  Saved Addresses (please select)
+                </p>
+              </div>
+              {userAddresses?.map((item, index) => {
+                return (
+                  <AddressRow
+                    key={index}
+                    address={item}
+                    handleSetSelectedAddress={handleSetSelectedAddress}
+                    handleDeleteAddress={handleDeleteAddress}
+                  />
+                );
+              })}
+            </>
+          )}
+          <div className="">
+            <CustomButton
+              title="Add New address"
+              className="ms-1"
+              handleClick={() => setShowAddressForm(true)}
             />
-          </>
-        )}
-      </Row>
-      <Row className="w-75 w-lg-50 mx-auto d-flex flex-column">
-        <div>
-          <p className={styles.newAddressHeader}>Order Summary</p>
-        </div>
-        {showAddressForm && (
-          <>
-            <div>
-              <p className={styles.newAddressHeader}>New Address</p>
-            </div>
-            <AddressForm
-              values={values}
-              handleBlur={handleBlur}
-              touched={touched}
-              handleChange={handleChange}
-              handleSubmit={handleSubmit}
-              errors={errors}
-              loading={loading}
-              handleReset={handleReset}
-            />
-          </>
-        )}
+            {showAddressForm && (
+              <>
+                <div>
+                  <p className={styles.newAddressHeader}>New Address</p>
+                </div>
+                <AddressForm
+                  values={values}
+                  handleBlur={handleBlur}
+                  touched={touched}
+                  handleChange={handleChange}
+                  handleSubmit={handleSubmit}
+                  errors={errors}
+                  loading={loading}
+                  handleReset={handleReset}
+                />
+              </>
+            )}
+          </div>
+        </Col>
+        <Col xs={24} md={13} className="mx-auto">
+          <div>
+            <p className={styles.newAddressHeader}>Order Summary</p>
+            <OrderSummary cart={userCart} handlePlaceOrder={handlePlaceOrder} />
+          </div>
+        </Col>
       </Row>
     </>
   );

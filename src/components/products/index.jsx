@@ -5,6 +5,7 @@ import { useParams } from "react-router-dom";
 import CustomImage from "../shared-components/custom-image";
 import { FiEdit } from "react-icons/fi";
 import EditProductModal from "./edit-product-modal";
+import PageLoader from "../shared-components/page-loader";
 
 const Products = () => {
   const { loading, getProductsByCategory } = useProduct();
@@ -112,6 +113,8 @@ const Products = () => {
   }, [dataState]);
   return (
     <>
+      <PageLoader loading={loading} />
+
       <EditProductModal
         isModalOpen={isProductModalOpen}
         handleCloseEditProductModal={handleCloseEditProductModal}

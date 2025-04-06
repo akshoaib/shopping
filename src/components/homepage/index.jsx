@@ -8,8 +8,9 @@ import useCategory from "@/hooks/useCategory";
 import ProductCategories from "./product-categories";
 import ProductCard from "../shared-components/product-card";
 import { Footer } from "antd/es/layout/layout";
+import PageLoader from "../shared-components/page-loader";
 const Homepage = () => {
-  const { getProductsByCategory } = useProduct();
+  const { loading, getProductsByCategory } = useProduct();
   const { loading: categoryLoading, getCategories } = useCategory();
 
   const [products, setProducts] = useState([]);
@@ -52,6 +53,7 @@ const Homepage = () => {
   }, []);
   return (
     <>
+      <PageLoader loading={categoryLoading || loading} />
       <Row>
         <Col span={24} className="p-2 p-lg-4">
           <ProductSlider products={products} />
