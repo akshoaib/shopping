@@ -20,7 +20,7 @@ const AddToCartModal = ({ product, isModalOpen, handleClose }) => {
         // handleSave={handleSubmit}
         width="800px"
       >
-        <AddToCart product={product} />
+        <AddToCart product={product} handleCloseModal={handleClose} />
       </CustomModal>
     </>
   );

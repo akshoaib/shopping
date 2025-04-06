@@ -28,7 +28,6 @@ export const handleApiCall = async (
   setError(null);
   try {
     const resp = await apiFunction();
-    console.log({ resp }, showSuccessMessage, resp.success);
 
     if (resp.success) {
       handleSuccess(resp.data);

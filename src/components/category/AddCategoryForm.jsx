@@ -27,22 +27,18 @@ const AddCategoryForm = ({ handleGetCategories, onCloseSideDrawer }) => {
     },
     enableReinitialize: true,
     onSubmit: (values) => {
-      console.log({ values });
       const formData = new FormData();
 
       formData.append("name", values.name);
       formData.append("image", values.image[0]);
-      console.log({ formData });
 
       createCategory(formData, (resp) => {
-        console.log({ resp });
         handleGetCategories();
         onCloseSideDrawer();
       });
     },
     validationSchema: createCategorySchema,
   });
-  console.log({ values });
 
   return (
     <div>

@@ -4,10 +4,8 @@ import { Button, message, Upload } from "antd";
 
 const CustomUpload = ({ handleChange, name, error, value }) => {
   const [fileList, setFileList] = useState([]);
-  console.log({ fileList });
 
   const handleFileChange = ({ fileList }) => {
-    console.log({ fileList });
     if (fileList.length > 0) {
     } else {
       // handleChange;
@@ -28,7 +26,6 @@ const CustomUpload = ({ handleChange, name, error, value }) => {
         listType="picture"
         fileList={fileList}
         onChange={(e) => {
-          console.log({ e });
           if (e?.fileList?.length > 0) {
             console.log("Dfdf", e.file);
 

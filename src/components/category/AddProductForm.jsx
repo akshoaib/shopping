@@ -19,7 +19,6 @@ const AddProductForm = ({ handleGetCategories, onCloseSideDrawer }) => {
 
   const handleGetCategoryDropdown = () => {
     getCategoryDropdown((resp) => {
-      console.log({ resp });
       setCategories(resp);
     });
   };
@@ -37,6 +36,7 @@ const AddProductForm = ({ handleGetCategories, onCloseSideDrawer }) => {
       name: "",
       price: "",
       quantity: "",
+      description: "",
       category: "",
       images: null,
     },
@@ -55,7 +55,6 @@ const AddProductForm = ({ handleGetCategories, onCloseSideDrawer }) => {
       }
 
       createProduct(formData, (resp) => {
-        console.log({ resp });
         handleGetCategories();
         onCloseSideDrawer();
       });
@@ -67,15 +66,9 @@ const AddProductForm = ({ handleGetCategories, onCloseSideDrawer }) => {
     setFieldValue("image", e.currentTarget.files[0]);
   };
 
-  console.log({ values });
-
   useEffect(() => {
     handleGetCategoryDropdown();
   }, []);
-
-  console.log({ errors });
-
-  console.log({ values });
 
   return (
     <div>
@@ -100,6 +93,17 @@ const AddProductForm = ({ handleGetCategories, onCloseSideDrawer }) => {
           label="Product Name"
           placeholder="Enter product name"
           error={errors.name}
+        />
+        <CustomInput
+          name="description"
+          type="text"
+          handleChange={handleChange}
+          value={values.description}
+          onBlur={handleBlur}
+          touched={touched.description}
+          label="Description"
+          placeholder="Enter product description"
+          error={errors.description}
         />
         <CustomInput
           name="price"

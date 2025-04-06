@@ -3,30 +3,35 @@ import styles from "./add-to-cart.module.css";
 import CustomButton from "@/components/shared-components/custom-button";
 import { useFormik } from "formik";
 import { useState } from "react";
-const AddToCart = ({ product }) => {
+import { addToCartSchema } from "@/utils/validationSchemas/cart";
+import useCart from "@/hooks/useCart";
+import CartCard from "@/components/shared-components/cart-card";
+import { useSelector } from "react-redux";
+const AddToCart = ({ product, handleCloseModal }) => {
   const [mainImage, setMainImage] = useState(product?.images[0]);
-  const { values } = useFormik({
-    initialValues: {
-      quantity: "1",
-    },
-    enableReinitialize: true,
-    onSubmit: (values) => {
-      console.log({ values });
-      const formData = new FormData();
 
-      formData.append("name", values.name);
-      formData.append("image", values.image[0]);
-      console.log({ formData });
+  const { addToCart } = useCart();
 
-      createCategory(formData, (resp) => {
-        console.log({ resp });
-        handleGetCategories();
-        onCloseSideDrawer();
-      });
-    },
-    // validationSchema: createCategorySchema,
-  });
-  console.log({ values });
+  const token = useSelector((state) => state.auth.token);
+
+  const { values, handleChange, handleSubmit, errors, touched, setFieldValue } =
+    useFormik({
+      initialValues: {
+        quantity: 1,
+      },
+      enableReinitialize: true,
+      onSubmit: (values) => {
+        const payload = {
+          quantity: values.quantity,
+          productId: product?._id,
+        };
+
+        addToCart(payload, (resp) => {
+          handleCloseModal();
+        });
+      },
+      validationSchema: addToCartSchema,
+    });
 
   return (
     <>
@@ -56,22 +61,15 @@ const AddToCart = ({ product }) => {
               })}
           </div>
         </Col>
-        <Col xs={24} md={15} className=" ps-4 pt-2">
-          <p className={styles.name}>{product?.name}</p>
-          <p className={styles.price}>Rs. {product?.price}</p>
-          <div className={`${styles.addToCartContainer} d-flex mb-2`}>
-            <button className={styles.addToCartButton}>-</button>
-            <input
-              value={values.quantity}
-              type="text"
-              className={styles.addToCartInput}
-            />
-            <button className={styles.addToCartButton}>+</button>
-          </div>
-          <div>
-            <CustomButton title={"Add to Cart"} />
-          </div>
-        </Col>
+        <CartCard
+          product={product}
+          values={values}
+          handleChange={handleChange}
+          setFieldValue={setFieldValue}
+          handleSubmit={handleSubmit}
+          errors={errors}
+          updatingCart={false}
+        />
       </Row>
     </>
   );

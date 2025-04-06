@@ -8,12 +8,12 @@ import { setLoggedinUser, setToken } from "@/reducers/authSlice";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { Col, Row } from "antd";
+import PageLoader from "../shared-components/page-loader";
 
 const Signin = () => {
   const { loading, signin } = useAuth();
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  console.log({ styles });
   const userLogin = (values) => {
     let body = {
       email: values.email,
@@ -26,6 +26,9 @@ const Signin = () => {
 
       dispatch(setLoggedinUser(resp.user));
       dispatch(setToken(resp.token));
+
+      console.log("runnnningggggggggggggg");
+
       navigate("/");
     });
   };
@@ -50,11 +53,9 @@ const Signin = () => {
     validationSchema: signInSchema,
   });
 
-  console.log({ errors });
-  console.log({ values });
-
   return (
     <>
+      <PageLoader loading={loading} />
       <Row className={styles.signinContainer}>
         <Col span={12} />
         <Col span={12} className="h-100 bg-light p-4">

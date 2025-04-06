@@ -11,8 +11,6 @@ const AllRoutes = () => {
   const token = useSelector((state) => state.auth.token);
   const user = useSelector((state) => state.auth.loggedInUser);
 
-  console.log({ user });
-
   return (
     <Router>
       <ToastContainer />

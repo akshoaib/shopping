@@ -10,8 +10,6 @@ const ProductCard = ({ product }) => {
   const token = useSelector((state) => state.auth.token);
   const user = useSelector((state) => state.auth.loggedInUser);
 
-  console.log({ token }, { user });
-
   const handleCloseAddToCartModal = () => {
     setShowAddToCartModal(false);
   };
