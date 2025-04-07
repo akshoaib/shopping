@@ -42,7 +42,6 @@ const Signin = () => {
     initialValues: {
       email: "",
       password: "",
-      confirmPassword: "",
     },
     onSubmit: (values) => {
       userLogin(values);
@@ -86,16 +85,6 @@ const Signin = () => {
                   touched={touched.password}
                   label="Password"
                   error={errors.password}
-                />
-                <CustomInput
-                  name="confirmPassword"
-                  type="password"
-                  handleChange={handleChange}
-                  onBlur={handleBlur}
-                  value={values.confirmPassword}
-                  touched={touched.confirmPassword}
-                  label="Confirm Password"
-                  error={errors.confirmPassword}
                 />
 
                 <CustomButton
