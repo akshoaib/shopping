@@ -17,8 +17,8 @@ const AddressRow = ({
         >
           <input type="radio" name="address" checked={address?.selected} />
         </Col>
-        <Col xs={18}>
-          <p>{address?.address?.completeAddress}</p>
+        <Col xs={18} className="d-flex align-items-center">
+          <p className="my-auto">{address?.address?.completeAddress}</p>
         </Col>
         <Col
           xs={2}
