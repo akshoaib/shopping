@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { persistor } from "@/store";
 import { setLoggedinUser, setToken } from "@/reducers/authSlice";
 import { RiLogoutBoxLine } from "react-icons/ri";
+import LogoImage from "../../../../assets/logo.png";
 
 const Header = () => {
   const navigate = useNavigate();
@@ -26,9 +27,17 @@ const Header = () => {
   return (
     <>
       <div className={styles.productsHeader}>
-        <p role="button" onClick={() => navigate(APP_ROUTES.public.HOME)}>
-          WardrobeWave
-        </p>
+        <div
+          role="button"
+          onClick={() => navigate(APP_ROUTES.public.HOME)}
+          style={{ display: "flex", alignItems: "center" }}
+        >
+          <img
+            src={LogoImage}
+            alt="Logo"
+            style={{ height: "40px", width: "120px", objectFit: "cover" }}
+          />
+        </div>
         <div className="d-flex gap-2">
           {token ? (
             <p className={styles.headerItem}>
