@@ -22,8 +22,6 @@ const Cart = () => {
 
   const handleGetCart = () => {
     getCart((resp) => {
-      console.log("cart rfff:", resp);
-
       if (resp?.cart) {
         setUserCart({
           cart: resp.cart,

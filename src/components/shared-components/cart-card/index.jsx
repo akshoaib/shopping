@@ -39,7 +39,8 @@ const CartCard = ({
                     `cart.${productNumber}.quantity`,
                     values.quantity - 1
                   );
-                  handleUpdateCart(product?._id, -1);
+
+                  handleUpdateCart(product?._id, values.quantity == 1 ? 0 : -1);
                 } else {
                   setFieldValue("quantity", values.quantity - 1);
                 }
@@ -57,8 +58,6 @@ const CartCard = ({
             />
             <button
               onClick={() => {
-                console.log("quantity", values.quantity);
-
                 if (updatingCart) {
                   setFieldValue(
                     `cart.${productNumber}.quantity`,
@@ -66,7 +65,7 @@ const CartCard = ({
                   );
                   handleUpdateCart(product?._id, 1);
                 } else {
-                  setFieldValue("quantity", values.quantity + 1);
+                  setFieldValue("quantity", values?.quantity + 1);
                 }
               }}
               className={styles.addToCartButton}

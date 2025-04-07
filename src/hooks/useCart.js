@@ -39,7 +39,7 @@ const useCart = () => {
         () => CartService.addToCart(body, token),
         handleSuccess,
         true,
-        "added to cart successfully",
+        "cart updated successfully",
         "Unable to add to cart"
       ),
     // eslint-disable-next-line react-hooks/exhaustive-deps
