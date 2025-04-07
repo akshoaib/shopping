@@ -7,6 +7,7 @@ import HomePage from "@/pages/homepage";
 import ProductsListingPage from "@/pages/products-listing";
 import BlogPage from "@/pages/blog";
 import SignupPage from "@/pages/signup";
+import AboutPage from "@/pages/about";
 
 const UnProtectedRoutes = () => {
   const publicRoutes = APP_ROUTES.public;
@@ -44,6 +45,14 @@ const UnProtectedRoutes = () => {
         element={
           <GuestLayout>
             <CartPage />
+          </GuestLayout>
+        }
+      />
+      <Route
+        path={publicRoutes.ABOUT}
+        element={
+          <GuestLayout>
+            <AboutPage />
           </GuestLayout>
         }
       />

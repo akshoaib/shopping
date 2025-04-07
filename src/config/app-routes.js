@@ -7,6 +7,7 @@ export const APP_ROUTES = {
     CART: "/cart",
     PRODUCTS_LISTING: (categoryId) => `/products-listing/${categoryId}`,
     BLOG: "/blog",
+    ABOUT: "/about-us",
   },
 
   private_admin: {
@@ -18,15 +19,13 @@ export const APP_ROUTES = {
   },
   private_customer: {
     HOME: "/",
-    // PRODUCT_LISTING: "/products",
     PRODUCTS_LISTING: (categoryId) => `/products-listing/${categoryId}`,
-
     LOGIN: "/login",
     CATEGORY: "/category",
-    // PRODUCTS: (categoryId) => `/products/${categoryId}`,s
     ORDERS: "/orders",
     CART: "/cart",
     CHECKOUT: "/checkout",
     BLOG: "/blog",
+    ABOUT: "/about-us",
   },
 };

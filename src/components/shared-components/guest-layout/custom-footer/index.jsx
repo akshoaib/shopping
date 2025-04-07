@@ -31,7 +31,7 @@ const CustomFooter = () => {
         <div>
           <h5 className="footer-heading">INFORMATION</h5>
           <ul className="footer-list">
-            <li>About us</li>
+            <li onClick={() => navigate(APP_ROUTES.public.ABOUT)}>About us</li>
             <li onClick={() => navigate(APP_ROUTES.public.BLOG)}>New Trends</li>
           </ul>
         </div>
