@@ -128,7 +128,7 @@ const Checkout = () => {
     <>
       <PageLoader loading={loading || cartLoading} />
 
-      <Row className="px-auto">
+      <Row className="px-2 px-md-auto">
         <Col xs={24} md={7} className="mx-auto">
           {userAddresses && userAddresses?.length > 0 && (
             <>
