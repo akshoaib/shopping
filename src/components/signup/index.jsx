@@ -67,9 +67,9 @@ const Signup = () => {
             <img src={LogoImage} width={200} />
           </div>
         </Col>
-        <Col span={24} className="px-4 mb-5">
-          <Row className="mb-5">
-            <Col xs={24} md={12} className="mx-auto mb-5">
+        <Col span={24} className="px-4 mt-4">
+          <Row>
+            <Col xs={24} md={12} className="mx-auto ">
               <form className="d-flex flex-column" onSubmit={handleSubmit}>
                 <CustomInput
                   name="firstName"
