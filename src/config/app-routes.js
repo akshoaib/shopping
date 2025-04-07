@@ -27,5 +27,6 @@ export const APP_ROUTES = {
     CHECKOUT: "/checkout",
     BLOG: "/blog",
     ABOUT: "/about-us",
+    USER_ORDERS: "/user-orders",
   },
 };

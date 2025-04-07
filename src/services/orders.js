@@ -10,6 +10,14 @@ OrderService.getAllOrders = async (body, token) => {
   });
 };
 
+OrderService.getUserOrders = async (token) => {
+  return api.get(`${url}/get-user-orders`, {
+    headers: {
+      Authorization: `${token}`,
+    },
+  });
+};
+
 OrderService.getPaymentStatusDropdown = async (token) => {
   return api.get(`${url}/get-payment-dropdown`, {
     headers: {
