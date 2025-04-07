@@ -54,7 +54,6 @@ const Order = () => {
   const handleEditOrder = (order) => {
     setIsOrderModalOpen(true);
     setSelectedOrder(order);
-    console.log("hryyy:: ", order);
   };
 
   const handleCloseEditOrderModal = () => {
@@ -131,17 +130,13 @@ const Order = () => {
   };
 
   const fetchSearchData = (body) => {
-    console.log("xxxxxxxx", body);
-
     getAllOrders({}, (resp) => {
-      console.log("oooooooooo ", resp.orders);
       setData({
         data: resp.orders,
         total: resp.total,
       });
     });
   };
-  console.log("hhhhhhh", data);
 
   useEffect(() => {
     fetchSearchData(defaultBody({}));

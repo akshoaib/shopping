@@ -14,7 +14,6 @@ const ProductCategories = ({ loading, categories }) => {
           {categories?.map((category) => (
             <Col xs={9} md={4}>
               <div key={category.id} className="">
-                {console.log("category", category)}
                 <div
                   onClick={() =>
                     navigate(APP_ROUTES.public.PRODUCTS_LISTING(category._id))

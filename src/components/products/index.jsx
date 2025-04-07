@@ -29,7 +29,6 @@ const Products = () => {
   const handleEditProduct = (product) => {
     setIsProductModalOpen(true);
     setSelectedProduct(product);
-    console.log("hryyy:: ", product);
   };
 
   const handleCloseEditProductModal = () => {
@@ -95,17 +94,13 @@ const Products = () => {
   };
 
   const fetchSearchData = (body) => {
-    console.log("xxxxxxxx", body);
-
     getProductsByCategory(body, (resp) => {
-      console.log("oooooooooo ", resp.products);
       setData({
         data: resp.products,
         total: resp.total,
       });
     });
   };
-  console.log("hhhhhhh", data);
 
   useEffect(() => {
     // getProductsByCategory({}, (resp) => {});

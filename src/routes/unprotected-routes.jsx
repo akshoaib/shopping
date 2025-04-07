@@ -6,6 +6,7 @@ import GuestLayout from "@/components/shared-components/guest-layout";
 import HomePage from "@/pages/homepage";
 import ProductsListingPage from "@/pages/products-listing";
 import BlogPage from "@/pages/blog";
+import SignupPage from "@/pages/signup";
 
 const UnProtectedRoutes = () => {
   const publicRoutes = APP_ROUTES.public;
@@ -37,6 +38,7 @@ const UnProtectedRoutes = () => {
         }
       />
       <Route path={publicRoutes.LOGIN} element={<SigninPage />} />
+      <Route path={publicRoutes.REGISTER} element={<SignupPage />} />
       <Route
         path={publicRoutes.CART}
         element={

@@ -3,6 +3,7 @@ export const APP_ROUTES = {
     HOME: "/",
     SIGNUP: "/signup",
     LOGIN: "/login",
+    REGISTER: "/signup",
     CART: "/cart",
     PRODUCTS_LISTING: (categoryId) => `/products-listing/${categoryId}`,
     BLOG: "/blog",

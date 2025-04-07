@@ -1,7 +1,7 @@
-.signinContainer {
+registerContainer {
   height: 100vh;
 }
-.signup {
+.signin {
   border-bottom: 1px solid black;
   cursor: pointer;
   margin: 0 2px;

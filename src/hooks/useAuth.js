@@ -42,7 +42,20 @@ const useAuth = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
     []
   );
-  return { loading, signin };
+
+  const registerUser = useCallback(
+    (body, handleSuccess) =>
+      createApiCaller(
+        () => AuthService.registerUser(body),
+        handleSuccess,
+        true,
+        "Signup successfully",
+        "Unable to signup"
+      ),
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    []
+  );
+  return { loading, signin, registerUser };
 };
 
 export default useAuth;

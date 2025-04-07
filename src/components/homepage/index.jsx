@@ -1,13 +1,11 @@
 import { Col, Row } from "antd";
 import styles from "./product-listing.module.css";
 import useProduct from "@/hooks/useProduct";
-import { useFormik } from "formik";
 import { useEffect, useState } from "react";
 import ProductSlider from "./products-slider";
 import useCategory from "@/hooks/useCategory";
 import ProductCategories from "./product-categories";
 import ProductCard from "../shared-components/product-card";
-import { Footer } from "antd/es/layout/layout";
 import PageLoader from "../shared-components/page-loader";
 const Homepage = () => {
   const { loading, getProductsByCategory } = useProduct();
@@ -16,39 +14,17 @@ const Homepage = () => {
   const [products, setProducts] = useState([]);
   const [categories, setCategories] = useState([]);
 
-  const {
-    values,
-    handleChange,
-    handleSubmit,
-    errors,
-    touched,
-    handleBlur,
-    handleReset,
-  } = useFormik({
-    initialValues: {
-      categoryId: "",
-    },
-    enableReinitialize: true,
-    onSubmit: (values) => {
-      console.log("submit vals::: ", values);
-    },
-  });
   const fetchSearchData = (body) => {
-    console.log("xxxxxxxx", body);
-
     getProductsByCategory(body, (resp) => {
-      console.log("oooooooooo ", resp.products);
       setProducts(resp.products);
     });
 
     getCategories((resp) => {
-      console.log("categories", resp);
       setCategories(resp);
     });
   };
 
   useEffect(() => {
-    // getProductsByCategory({}, (resp) => {});
     fetchSearchData();
   }, []);
   return (

@@ -42,7 +42,6 @@ const Category = () => {
   };
 
   const handleCategoryClick = (_id) => {
-    console.log("category id: ", _id);
     navigate(APP_ROUTES.private_admin.PRODUCTS(_id));
   };
   useEffect(() => {

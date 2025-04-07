@@ -92,6 +92,15 @@ const Signin = () => {
                   title={"Sign in"}
                   handleClick={handleSubmit}
                 />
+                <p className="text-end" style={{ fontSize: "12px" }}>
+                  Not Registered?
+                  <span
+                    onClick={() => navigate(APP_ROUTES.public.REGISTER)}
+                    className={styles.signup}
+                  >
+                    Signup
+                  </span>
+                </p>
               </form>
             </Col>
           </Row>
