@@ -91,7 +91,7 @@ const useOrder = () => {
         () => OrderService.placeOrder(body, token),
         handleSuccess,
         true,
-        "order places",
+        "Order placed",
         "Unable to place order"
       ),
     // eslint-disable-next-line react-hooks/exhaustive-deps
