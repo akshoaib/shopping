@@ -19,15 +19,10 @@ const Signin = () => {
       email: values.email,
       password: values.password,
     };
-    console.log("bofy1::", body);
 
     signin(body, (resp) => {
-      console.log("reponse::", resp);
-
       dispatch(setLoggedinUser(resp.user));
       dispatch(setToken(resp.token));
-
-      console.log("runnnningggggggggggggg");
 
       navigate("/");
     });
@@ -58,9 +53,9 @@ const Signin = () => {
       <PageLoader loading={loading} />
       <Row className={styles.signinContainer}>
         <Col span={24} className="h-50 bg-dark"></Col>
-        <Col span={24} className="px-4">
-          <Row>
-            <Col xs={24} md={12} className="mx-auto">
+        <Col span={24} className="px-4 mb-5">
+          <Row className="mb-5">
+            <Col xs={24} md={12} className="mx-auto mb-5">
               <form className="d-flex flex-column" onSubmit={handleSubmit}>
                 <CustomInput
                   name="email"
