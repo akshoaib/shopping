@@ -7,10 +7,11 @@ import { addToCartSchema } from "@/utils/validationSchemas/cart";
 import useCart from "@/hooks/useCart";
 import CartCard from "@/components/shared-components/cart-card";
 import { useSelector } from "react-redux";
+import PageLoader from "@/components/shared-components/page-loader";
 const AddToCart = ({ product, handleCloseModal }) => {
   const [mainImage, setMainImage] = useState(product?.images[0]);
 
-  const { addToCart } = useCart();
+  const { loading, addToCart } = useCart();
 
   const token = useSelector((state) => state.auth.token);
 
@@ -35,6 +36,7 @@ const AddToCart = ({ product, handleCloseModal }) => {
 
   return (
     <>
+      <PageLoader loading={loading} />
       <Row>
         <Col xs={24} md={9}>
           <div>

@@ -12,10 +12,9 @@ import PageLoader from "../shared-components/page-loader";
 
 const Cart = () => {
   const navigate = useNavigate();
-  const { loading, getCart } = useCart();
+  const { loading, getCart, addToCart, deleteCartItem } = useCart();
   const token = useSelector((state) => state.auth.token);
   const user = useSelector((state) => state.auth.loggedInUser);
-  const { addToCart, deleteCartItem } = useCart();
   const [userCart, setUserCart] = useState({
     cart: [],
     total: 0,
@@ -40,7 +39,9 @@ const Cart = () => {
       productId: productId,
     };
 
-    addToCart(payload, (resp) => {});
+    addToCart(payload, (resp) => {
+      handleGetCart();
+    });
   };
 
   const handleDeleteCartItem = (productId) => {
@@ -111,7 +112,7 @@ const Cart = () => {
                   </p>
                   <div className="d-flex justify-content-center my-4">
                     <CustomButton
-                      handleClick={() => navigate(APP_ROUTES.public.CART)}
+                      handleClick={() => navigate(APP_ROUTES.public.HOME)}
                       title="Continue shopping"
                     />
                   </div>
