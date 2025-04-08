@@ -18,7 +18,6 @@ const Category = () => {
   const [openCategoryDrawer, setOpenCategoryDrawer] = useState(false);
   const [openProductDrawer, setOpenProductDrawer] = useState(false);
 
-  console.log("bros:: ", categories);
   const handleGetCategories = () => {
     getCategories((resp) => {
       setCategories(resp);

@@ -1,17 +1,12 @@
 import { useFormik } from "formik";
 import CustomModal from "../shared-components/custom-modal";
 import CustomSelect from "../shared-components/custom-select";
-import useCategory from "@/hooks/useCategory";
 import { useEffect, useState } from "react";
-import CustomInput from "../shared-components/custom-input";
-import CustomUpload from "../shared-components/custom-upload";
-import CustomButton from "../shared-components/custom-button";
-import CustomImage from "../shared-components/custom-image";
-import { isValidUrl } from "@/utils";
-import { editProductSchema } from "@/utils/validationSchemas/product";
-import useProduct from "@/hooks/useProduct";
 import useOrder from "@/hooks/useOrder";
 import { Col, Row } from "antd";
+import FooterButtons from "../shared-components/footer-btns";
+import PageLoader from "../shared-components/page-loader";
+import LoaderButton from "../shared-components/loader-button";
 
 const EditOrderModal = ({
   isModalOpen,
@@ -20,15 +15,18 @@ const EditOrderModal = ({
   dataState,
   setDataState,
 }) => {
-  const { getOrderStatusDropdown, getPaymentStatusDropdown, updateOrder } =
-    useOrder();
+  const {
+    loading,
+    getOrderStatusDropdown,
+    getPaymentStatusDropdown,
+    updateOrder,
+  } = useOrder();
 
   const [orderStatusDropdown, setOrderStatusDropdown] = useState([]);
   const [paymentStatusDropdown, setPaymentStatusDropdown] = useState([]);
 
   const handleGetDropdowns = () => {
     getOrderStatusDropdown((res) => {
-      console.log("jjjjjj", { res });
       setOrderStatusDropdown(res.orderStatusDropdown);
     });
 
@@ -37,33 +35,39 @@ const EditOrderModal = ({
     });
   };
 
-  const { values, handleChange, handleSubmit, errors, touched, handleBlur } =
-    useFormik({
-      initialValues: {
-        orderStatus: selectedOrder?.orderStatus,
-        paymentStatus: selectedOrder?.paymentStatus,
-      },
-      enableReinitialize: true,
-      onSubmit: (values) => {
-        console.log("submit vals::: ", values);
-        let body = {
-          ...values,
-          _id: selectedOrder?._id,
-        };
-        updateOrder(body, (resp) => {
-          setDataState({ ...dataState });
-          handleCloseEditOrderModal();
-        });
-      },
-    });
-
-  console.log("dddddddddddd", values);
+  const {
+    values,
+    handleChange,
+    handleSubmit,
+    errors,
+    touched,
+    handleBlur,
+    handleReset,
+  } = useFormik({
+    initialValues: {
+      orderStatus: selectedOrder?.orderStatus,
+      paymentStatus: selectedOrder?.paymentStatus,
+    },
+    enableReinitialize: true,
+    onSubmit: (values) => {
+      let body = {
+        ...values,
+        _id: selectedOrder?._id,
+      };
+      updateOrder(body, (resp) => {
+        setDataState({ ...dataState });
+        handleCloseEditOrderModal();
+      });
+    },
+  });
 
   useEffect(() => {
     handleGetDropdowns();
   }, []);
+
   return (
     <>
+      <PageLoader loading={loading} />
       <CustomModal
         title="Edit Order"
         isModalOpen={isModalOpen}
@@ -94,6 +98,14 @@ const EditOrderModal = ({
                 label="Payment Status"
                 error={errors.paymentStatus}
                 data={paymentStatusDropdown}
+              />
+            </Col>
+            <Col className="mt-2" span={24}>
+              <FooterButtons
+                title={loading ? <LoaderButton /> : "Save"}
+                handleSubmit={handleSubmit}
+                handleReset={handleReset}
+                disabled={loading}
               />
             </Col>
           </Row>

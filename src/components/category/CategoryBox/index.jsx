@@ -1,8 +1,5 @@
 import styles from "./category-box.module.css";
-import categoryImage from "../../../assets/category.jpg";
 const CategoryBox = ({ category, handleCategoryClick }) => {
-  console.log("dfdfdf: ", category);
-
   return (
     <>
       <div
