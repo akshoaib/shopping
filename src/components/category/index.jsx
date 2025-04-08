@@ -8,9 +8,10 @@ import CustomButton from "../shared-components/custom-button";
 import AddProductForm from "./AddProductForm";
 import { useNavigate } from "react-router-dom";
 import { APP_ROUTES } from "@/config/app-routes";
+import PageLoader from "../shared-components/page-loader";
 
 const Category = () => {
-  const { getCategories } = useCategory();
+  const { loading, getCategories } = useCategory();
   const navigate = useNavigate();
 
   const [categories, setCategories] = useState([]);
@@ -49,6 +50,7 @@ const Category = () => {
 
   return (
     <>
+      <PageLoader loading={loading} />
       <div className="d-flex justify-content-end gap-2">
         <CustomButton
           type="primary"

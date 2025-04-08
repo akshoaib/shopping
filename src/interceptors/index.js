@@ -17,7 +17,7 @@ const handleResponseError = (error) => {
 
 const api = axios.create({
   baseURL: import.meta.env.VITE_API_ENDPOINT_URL,
-  timeout: 120000,
+  timeout: 180000,
 });
 
 // API request interceptor
