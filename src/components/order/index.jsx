@@ -130,7 +130,9 @@ const Order = () => {
   };
 
   const fetchSearchData = (body) => {
-    getAllOrders({}, (resp) => {
+    const { limit, page } = body;
+
+    getAllOrders(limit, page, (resp) => {
       setData({
         data: resp.orders,
         total: resp.total,
@@ -155,6 +157,7 @@ const Order = () => {
         columns={columns}
         handlePageChange={handlePageChange}
         loading={loading}
+        currentPage={dataState.page}
       />
     </>
   );

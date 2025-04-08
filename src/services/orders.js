@@ -2,8 +2,8 @@ import api from "@/interceptors";
 const url = "/order";
 const OrderService = {};
 
-OrderService.getAllOrders = async (body, token) => {
-  return api.get(`${url}/get-all`, {
+OrderService.getAllOrders = async (limit, page, token) => {
+  return api.get(`${url}/get-all?limit=${limit}&page=${page}`, {
     headers: {
       Authorization: `${token}`,
     },

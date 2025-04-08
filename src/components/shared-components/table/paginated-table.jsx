@@ -1,22 +1,13 @@
 import { Table } from "antd";
 import TableSkeleton from "../skeletons/table-skeleton";
 
-const PaginatedTable = ({ data, columns, handlePageChange, loading }) => {
-  const dataSource = [
-    {
-      key: "1",
-      name: "Mike",
-      age: 32,
-      address: "10 Downing Street",
-    },
-    {
-      key: "2",
-      name: "John",
-      age: 42,
-      address: "10 Downing Street",
-    },
-  ];
-
+const PaginatedTable = ({
+  data,
+  columns,
+  handlePageChange,
+  loading,
+  currentPage = 1,
+}) => {
   return (
     <>
       {loading ? (
@@ -27,6 +18,7 @@ const PaginatedTable = ({ data, columns, handlePageChange, loading }) => {
           columns={columns}
           pagination={{
             pageSize: 10,
+            current: currentPage,
             total: data?.total,
             onChange: handlePageChange,
           }}
