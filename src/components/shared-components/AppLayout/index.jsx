@@ -2,6 +2,7 @@ import React from "react";
 import { FaShoppingCart } from "react-icons/fa";
 import { TbCategoryPlus } from "react-icons/tb";
 import { MdDashboardCustomize } from "react-icons/md";
+import { TbReportSearch } from "react-icons/tb";
 
 import { Layout, Menu, theme } from "antd";
 import { useNavigate } from "react-router-dom";
@@ -52,7 +53,14 @@ const AppLayout = ({ children }) => {
       icon: <FaShoppingCart size={20} />,
       label: "Orders",
       onClick: ({ key }) => {
-        console.log(key);
+        navigate(key);
+      },
+    },
+    {
+      key: "/reports",
+      icon: <TbReportSearch size={20} />,
+      label: "Reports",
+      onClick: ({ key }) => {
         navigate(key);
       },
     },

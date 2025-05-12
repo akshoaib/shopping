@@ -3,6 +3,7 @@ import { APP_ROUTES } from "@/config/app-routes";
 import CategoryPage from "@/pages/category";
 import OrderPage from "@/pages/order";
 import ProductsPage from "@/pages/products";
+import ReportsPage from "@/pages/reports";
 import { Navigate, Route, Routes } from "react-router-dom";
 
 const ProtectedAdminRoutes = () => {
@@ -36,6 +37,14 @@ const ProtectedAdminRoutes = () => {
         element={
           <AppLayout>
             <OrderPage />
+          </AppLayout>
+        }
+      />
+      <Route
+        path={privateRoutes.REPORTS}
+        element={
+          <AppLayout>
+            <ReportsPage />
           </AppLayout>
         }
       />

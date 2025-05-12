@@ -17,6 +17,7 @@ export const APP_ROUTES = {
     CATEGORY: "/category",
     PRODUCTS: (categoryId) => `/products/${categoryId}`,
     ORDERS: "/orders",
+    REPORTS: "/reports",
   },
   private_customer: {
     HOME: "/",
