@@ -8,6 +8,7 @@ export const APP_ROUTES = {
     PRODUCTS_LISTING: (categoryId) => `/products-listing/${categoryId}`,
     BLOG: "/blog",
     ABOUT: "/about-us",
+    VIEW_PRODUCT: (productId) => `/product/${productId}`,
   },
 
   private_admin: {
@@ -28,5 +29,6 @@ export const APP_ROUTES = {
     BLOG: "/blog",
     ABOUT: "/about-us",
     USER_ORDERS: "/user-orders",
+    VIEW_PRODUCT: (productId) => `/product/${productId}`,
   },
 };

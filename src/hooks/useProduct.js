@@ -72,7 +72,39 @@ const useProduct = () => {
     []
   );
 
-  return { loading, createProduct, getProductsByCategory, updateProduct };
+  const getProductById = useCallback(
+    (id, handleSuccess) =>
+      createApiCaller(
+        () => ProductService.getProductById(id, token),
+        handleSuccess,
+        false,
+        "",
+        "Unable to get product"
+      ),
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    []
+  );
+
+  const rateProduct = useCallback(
+    (payload, productId, handleSuccess) =>
+      createApiCaller(
+        () => ProductService.rateProduct(payload, productId, token),
+        handleSuccess,
+        true,
+        "Product Rated Successfully",
+        "Unable to rate product"
+      ),
+    []
+  );
+
+  return {
+    loading,
+    createProduct,
+    getProductsByCategory,
+    updateProduct,
+    getProductById,
+    rateProduct,
+  };
 };
 
 export default useProduct;

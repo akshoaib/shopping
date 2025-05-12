@@ -1,7 +1,5 @@
 import { toast } from "react-toastify";
 const showToast = (message, type, timer = 5000) => {
-  console.log("called");
-
   if (type === "success") {
     toast.success(message);
   } else if (type === "error") {
@@ -28,7 +26,6 @@ export const handleApiCall = async (
   setError(null);
   try {
     const resp = await apiFunction();
-
     if (resp.success) {
       handleSuccess(resp.data);
       if (showSuccessMessage) {

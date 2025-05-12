@@ -1,6 +1,12 @@
 import CustomButton from "../custom-button";
 
-const FooterButtons = ({ title, handleSubmit, handleReset, disabled }) => {
+const FooterButtons = ({
+  title,
+  handleSubmit,
+  handleReset,
+  disabled,
+  ResetTitle = "Reset",
+}) => {
   return (
     <>
       <div className="d-flex gap-2 justify-content-end">
@@ -13,7 +19,7 @@ const FooterButtons = ({ title, handleSubmit, handleReset, disabled }) => {
         <CustomButton
           disabled={disabled}
           type="submit"
-          title="Reset"
+          title={ResetTitle}
           handleClick={handleReset}
         />
       </div>

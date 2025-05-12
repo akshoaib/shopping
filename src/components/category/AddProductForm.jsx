@@ -38,6 +38,7 @@ const AddProductForm = ({ handleGetCategories, onCloseSideDrawer }) => {
       quantity: "",
       description: "",
       category: "",
+      tags: "",
       images: null,
     },
     onSubmit: (values) => {
@@ -45,8 +46,6 @@ const AddProductForm = ({ handleGetCategories, onCloseSideDrawer }) => {
       for (const key in values) {
         if (key === "images") {
           for (let file = 0; file < values.images.length; file++) {
-            console.log("23232323:: ", values.images[file]);
-
             formData.append("images", values.images[file]);
           }
         } else {
@@ -126,6 +125,17 @@ const AddProductForm = ({ handleGetCategories, onCloseSideDrawer }) => {
           label="Quantity"
           placeholder="Enter quantity"
           error={errors.quantity}
+        />
+        <CustomInput
+          name="tags"
+          type="text"
+          handleChange={handleChange}
+          value={values.tags}
+          onBlur={handleBlur}
+          touched={touched.tags}
+          label="Product Tags"
+          placeholder="Enter product tags"
+          error={errors.tags}
         />
         <div className="my-2"></div>
         <CustomUpload

@@ -8,6 +8,7 @@ import ProductsListingPage from "@/pages/products-listing";
 import BlogPage from "@/pages/blog";
 import SignupPage from "@/pages/signup";
 import AboutPage from "@/pages/about";
+import ViewProductPage from "@/pages/view-product";
 
 const UnProtectedRoutes = () => {
   const publicRoutes = APP_ROUTES.public;
@@ -19,6 +20,14 @@ const UnProtectedRoutes = () => {
         element={
           <GuestLayout>
             <ProductsListingPage />
+          </GuestLayout>
+        }
+      />
+      <Route
+        path={publicRoutes.VIEW_PRODUCT(":productId")}
+        element={
+          <GuestLayout>
+            <ViewProductPage />
           </GuestLayout>
         }
       />

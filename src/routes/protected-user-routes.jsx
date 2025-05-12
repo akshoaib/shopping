@@ -9,6 +9,7 @@ import ProductsListingPage from "@/pages/products-listing";
 import BlogPage from "@/pages/blog";
 import AboutPage from "@/pages/about";
 import UserOrdersPage from "@/pages/user-orders";
+import ViewProductPage from "@/pages/view-product";
 
 const ProtectedUserRoutes = () => {
   const privateRoutes = APP_ROUTES.private_customer;
@@ -90,6 +91,14 @@ const ProtectedUserRoutes = () => {
         element={
           <GuestLayout>
             <UserOrdersPage />
+          </GuestLayout>
+        }
+      />
+      <Route
+        path={privateRoutes.VIEW_PRODUCT(":productId")}
+        element={
+          <GuestLayout>
+            <ViewProductPage />
           </GuestLayout>
         }
       />

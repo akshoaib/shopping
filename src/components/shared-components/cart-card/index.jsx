@@ -27,8 +27,14 @@ const CartCard = ({
   return (
     // <Row>
     <>
-      <Col xs={6} className=" ps-4 pt-2">
+      <Col className=" ps-4 pt-2">
         <p className={styles.name}>{product?.name}</p>
+        {product?.reviews?.length > 0 && (
+          <p className={styles.name}>
+            Rating {product?.rating?.toFixed(1)} ({product?.reviews?.length})
+          </p>
+        )}
+
         <p className={styles.price}>Rs. {product?.price}</p>
         <div className="d-flex gap-2">
           <div className={`${styles.addToCartContainer} d-flex mb-2`}>

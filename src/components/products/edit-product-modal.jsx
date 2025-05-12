@@ -47,6 +47,7 @@ const EditProductModal = ({
       price: selectedProduct?.price || "",
       quantity: selectedProduct?.quantity || "",
       category: selectedProduct?.category || "",
+      tags: selectedProduct?.tags || "",
       images: [],
     },
     enableReinitialize: true,
@@ -150,6 +151,17 @@ const EditProductModal = ({
                 label="Description"
                 placeholder="Enter product description"
                 error={errors.description}
+              />
+              <CustomInput
+                name="tags"
+                type="text"
+                handleChange={handleChange}
+                value={values.tags}
+                onBlur={handleBlur}
+                touched={touched.tags}
+                label="Product Tags"
+                placeholder="Enter product tags"
+                error={errors.tags}
               />
               <CustomInput
                 name="price"

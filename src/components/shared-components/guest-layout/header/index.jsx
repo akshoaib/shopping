@@ -67,6 +67,15 @@ const Header = () => {
               <IoCartOutline role="button" size={25} color="#ffffff" />
             </p>
           )}
+          {token && (
+            <p
+              onClick={() => navigate(APP_ROUTES.private_customer.USER_ORDERS)}
+              className={styles.headerItem}
+              role="button"
+            >
+              Orders
+            </p>
+          )}
         </div>
       </div>
     </>
