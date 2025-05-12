@@ -15,7 +15,6 @@ const ViewProduct = () => {
   const { productId } = useParams();
   const { getUserOrders } = useOrder();
   const [product, setProduct] = useState(null);
-  const [orders, setOrders] = useState(null);
   const [activeImage, setActiveImage] = useState(null);
 
   const { values, handleChange, handleSubmit, errors, touched, setFieldValue } =
@@ -35,14 +34,7 @@ const ViewProduct = () => {
       validationSchema: addToCartSchema,
     });
 
-  const getOrders = () => {
-    getUserOrders((resp) => {
-      setOrders(resp?.orders);
-    });
-  };
-
   useEffect(() => {
-    getOrders();
     getProductById(productId, (resp) => {
       setProduct(resp);
       if (resp?.images?.length > 0) {
