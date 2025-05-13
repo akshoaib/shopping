@@ -62,9 +62,9 @@ const useAuth = () => {
       createApiCaller(
         () => AuthService.getUserReports(startDate, endDate, token),
         handleSuccess,
-        true,
-        "Signup successfully",
-        "Unable to signup"
+        false,
+        "",
+        "Unable to fetch user reports"
       ),
     // eslint-disable-next-line react-hooks/exhaustive-deps
     []

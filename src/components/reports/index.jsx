@@ -56,7 +56,7 @@ const Reports = () => {
             <XAxis dataKey="_id" />
             <YAxis />
             <Tooltip />
-            <Bar dataKey="count" />
+            <Bar dataKey="count" fill="#8884d8" />
           </BarChart>
         </ResponsiveContainer>
       </div>
