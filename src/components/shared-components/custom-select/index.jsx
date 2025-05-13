@@ -21,7 +21,6 @@ const CustomSelect = ({
         value={value}
         // defaultValue="a1"
         onChange={(e) => {
-          console.log("e", e);
           handleChange({
             target: {
               name,

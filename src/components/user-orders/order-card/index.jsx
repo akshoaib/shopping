@@ -12,14 +12,14 @@ const OrderCard = ({ order }) => {
   const OrderStatusBg = {
     1: "rgb(255 165 0 / 21%)",
     2: "#0000ff4d",
-    3: "rgb(255 255 0 / 5%)",
+    3: "#80808054",
     4: "rgb(0 128 0 / 19%)",
     5: "#ff00002e",
   };
   const OrderStatusBorder = {
     1: "rgb(255 165 0 / 21%)",
     2: "Blue",
-    3: "Yellow",
+    3: "Grey",
     4: "#008000",
     5: "Red",
   };

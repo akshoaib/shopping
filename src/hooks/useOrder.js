@@ -112,6 +112,19 @@ const useOrder = () => {
     []
   );
 
+  const getOrderStatusReports = useCallback(
+    (startDate, endDate, handleSuccess) =>
+      createApiCaller(
+        () => OrderService.getOrderStatusReports(startDate, endDate, token),
+        handleSuccess,
+        false,
+        "",
+        "Unable to fetch orders reports"
+      ),
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    []
+  );
+
   return {
     loading,
     getAllOrders,
@@ -120,6 +133,7 @@ const useOrder = () => {
     updateOrder,
     placeOrder,
     getUserOrders,
+    getOrderStatusReports,
   };
 };
 

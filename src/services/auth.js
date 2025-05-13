@@ -14,4 +14,15 @@ AuthService.registerUser = async (body) => {
   });
 };
 
+AuthService.getUserReports = async (startDate, endDate, token) => {
+  return api.get(
+    `${url}/get-user-report?startDate=${startDate}&endDate=${endDate}`,
+    {
+      headers: {
+        Authorization: `${token}`,
+      },
+    }
+  );
+};
+
 export default AuthService;

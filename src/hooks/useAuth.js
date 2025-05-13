@@ -9,6 +9,7 @@ const useAuth = () => {
   // loading state for getting the installation overview
 
   const [error, setError] = useState(null);
+  const token = useSelector((state) => state.auth.token);
 
   const createApiCaller = (
     apiFunction,
@@ -55,7 +56,21 @@ const useAuth = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
     []
   );
-  return { loading, signin, registerUser };
+
+  const getUserReports = useCallback(
+    (startDate, endDate, handleSuccess) =>
+      createApiCaller(
+        () => AuthService.getUserReports(startDate, endDate, token),
+        handleSuccess,
+        true,
+        "Signup successfully",
+        "Unable to signup"
+      ),
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    []
+  );
+
+  return { loading, signin, registerUser, getUserReports };
 };
 
 export default useAuth;

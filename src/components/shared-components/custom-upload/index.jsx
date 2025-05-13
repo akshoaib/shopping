@@ -27,8 +27,6 @@ const CustomUpload = ({ handleChange, name, error, value }) => {
         fileList={fileList}
         onChange={(e) => {
           if (e?.fileList?.length > 0) {
-            console.log("Dfdf", e.file);
-
             handleChange({
               target: {
                 name,

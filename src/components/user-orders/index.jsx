@@ -8,11 +8,9 @@ const UserOrders = () => {
 
   const handleGetUserOrders = () => {
     getUserOrders((resp) => {
-      console.log("User Orders: ", resp);
       setOrders(resp?.orders);
     });
   };
-  console.log({ orders });
 
   useEffect(() => {
     handleGetUserOrders();

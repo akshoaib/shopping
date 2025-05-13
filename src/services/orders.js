@@ -49,4 +49,16 @@ OrderService.placeOrder = async (body, token) => {
     },
   });
 };
+
+OrderService.getOrderStatusReports = async (startDate, endDate, token) => {
+  return api.get(
+    `${url}/order-status-report?startDate=${startDate}&endDate=${endDate}`,
+    {
+      headers: {
+        Authorization: `${token}`,
+      },
+    }
+  );
+};
+
 export default OrderService;
