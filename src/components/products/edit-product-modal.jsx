@@ -92,11 +92,11 @@ const EditProductModal = ({
                   <CustomImage
                     className="rounded"
                     src={selectedProduct?.images[0]}
-                    width="100%"
-                    height={200}
+                    // width="100%"
+                    // height={200}
                   />
                 </div>
-                <div className="d-flex gap-2 flex-wrap">
+                <div className="d-flex gap-2 flex-wrap mt-2">
                   {selectedProduct?.images
                     ?.slice(1, selectedProduct?.images.length)
                     .map((img) => {

@@ -1,14 +1,21 @@
-
-.imageContainer{
-    position: relative;
+.imageContainer {
+  position: relative;
+}
+imageContainer img {
+  height: 400;
+}
+.cartIcon {
+  position: absolute;
+  top: 80%;
+  right: 5%;
+  padding: 5px;
+  border-radius: 50%;
+  cursor: pointer;
+  background-color: white;
 }
 
-.cartIcon{
-    position: absolute;
-    top: 80%;
-    right: 5%;
-    padding: 5px;
-    border-radius: 50%;
-    cursor: pointer;
-    background-color: white;
+@media screen and (max-width: 768px) {
+  .imageContainer img {
+    height: 300px;
+  }
 }

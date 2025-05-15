@@ -8,7 +8,9 @@ const CategoryBox = ({ category, handleCategoryClick }) => {
       >
         <img
           width={"100%"}
-          height={200}
+          style={{
+            aspectRatio: "1/1",
+          }}
           src={category?.image}
           alt={category?.name}
         />
