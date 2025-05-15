@@ -10,8 +10,8 @@ const CustomModal = ({
 }) => {
   //   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const handleCancel = () => {
-    handleCloseModal();
+  const handleCancel = (e) => {
+    handleCloseModal(e);
   };
   const handleOk = () => {
     handleSave();

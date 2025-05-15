@@ -5,7 +5,8 @@ import { useState } from "react";
 const ProductCard = ({ product }) => {
   const [showAddToCartModal, setShowAddToCartModal] = useState(false);
 
-  const handleCloseAddToCartModal = () => {
+  const handleCloseAddToCartModal = (e) => {
+    e?.stopPropagation();
     setShowAddToCartModal(false);
   };
   return (
