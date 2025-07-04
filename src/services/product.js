@@ -19,11 +19,29 @@ ProductService.updateProduct = async (productId, body, token) => {
 };
 
 ProductService.getProductsByCategory = async (body, token) => {
-  return api.post(`${url}/get-all`, body, {
-    headers: {
-      Authorization: `${token}`,
-    },
-  });
+  let storageItem = localStorage.getItem("id");
+  let name = localStorage.getItem("name");
+  let tags = localStorage.getItem("tags");
+
+  console.log({ storageItem });
+
+  if (storageItem) {
+    return api.post(
+      `${url}/get-all?id=${storageItem}&name=${name}&tags=${tags}`,
+      body,
+      {
+        headers: {
+          Authorization: `${token}`,
+        },
+      }
+    );
+  } else {
+    return api.post(`${url}/get-all`, body, {
+      headers: {
+        Authorization: `${token}`,
+      },
+    });
+  }
 };
 ProductService.getProductById = async (id, token) => {
   return api.get(`${url}/get/${id}`, {

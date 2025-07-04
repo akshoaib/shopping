@@ -37,6 +37,13 @@ const ViewProduct = () => {
   useEffect(() => {
     getProductById(productId, (resp) => {
       setProduct(resp);
+
+      if (resp?._id) {
+        localStorage.setItem("id", resp._id);
+        localStorage.setItem("name", resp.name);
+        localStorage.setItem("tags", resp.tags);
+      }
+
       if (resp?.images?.length > 0) {
         setActiveImage(resp.images[0]);
       }
