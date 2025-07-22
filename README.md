@@ -24,7 +24,7 @@ This is the **React.js frontend** for my full-stack MERN (MongoDB, Express, Reac
 
 ## 🛠️ Tech Stack
 
-- **React.js** (with Vite or CRA)
+- **React.js** (with Vite)
 - **Redux Toolkit** for state management
 - **Axios** for HTTP requests
 - **React Router DOM** for routing
