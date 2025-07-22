@@ -67,7 +67,7 @@ const AppLayout = ({ children }) => {
   ];
   return (
     <Layout style={{ minWidth: 300 }} hasSider>
-      <Sider style={siderStyle} width={250}>
+      <Sider breakpoint="lg" style={siderStyle} width={250} collapsible>
         <div className="demo-logo-vertical" />
         <div>My app</div>
         <Menu

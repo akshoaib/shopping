@@ -90,7 +90,7 @@ const Category = () => {
         {categories?.length > 0 &&
           categories?.map((category) => {
             return (
-              <Col span={4}>
+              <Col xs={24} sm={12} md={8} lg={4} key={category._id}>
                 <CategoryBox
                   key={category.id}
                   category={category}

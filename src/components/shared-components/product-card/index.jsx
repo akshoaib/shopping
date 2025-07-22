@@ -24,6 +24,7 @@ const ProductCard = ({ product }) => {
               src={product.images[0]}
               style={{
                 objectFit: "cover",
+                height: 200,
               }}
               alt={product.name}
               className="rounded"

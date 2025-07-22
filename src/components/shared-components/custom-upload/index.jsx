@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { UploadOutlined } from "@ant-design/icons";
 import { Button, message, Upload } from "antd";
 
@@ -20,6 +20,12 @@ const CustomUpload = ({ handleChange, name, error, value }) => {
     }
     return isImage;
   };
+
+  useEffect(() => {
+    if (!value) {
+      setFileList([]);
+    }
+  }, [value]);
   return (
     <>
       <Upload

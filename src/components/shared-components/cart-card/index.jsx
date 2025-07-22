@@ -39,7 +39,8 @@ const CartCard = ({
         <div className="d-flex gap-2">
           <div className={`${styles.addToCartContainer} d-flex mb-2`}>
             <button
-              onClick={() => {
+              onClick={(e) => {
+                e.stopPropagation();
                 if (updatingCart) {
                   setFieldValue(
                     `cart.${productNumber}.quantity`,
@@ -63,7 +64,8 @@ const CartCard = ({
               className={styles.addToCartInput}
             />
             <button
-              onClick={() => {
+              onClick={(e) => {
+                e.stopPropagation();
                 if (updatingCart) {
                   setFieldValue(
                     `cart.${productNumber}.quantity`,

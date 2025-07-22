@@ -25,14 +25,14 @@ const OrderCard = ({ order }) => {
   };
 
   return (
-    <Row>
+    <Row className="">
       <Col
-        xs={12}
+        xs={20}
         lg={12}
         className="rounded p-2 mx-auto my-2"
         style={{ border: `2px solid ${OrderStatusBorder[order?.orderStatus]}` }}
       >
-        <div className=" d-flex justify-content-between ">
+        <div className=" d-flex flex-column flex-md-row justify-content-between ">
           <div>
             <p>Order ID: {order?._id}</p>
             <p>

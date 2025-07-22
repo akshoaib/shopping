@@ -31,6 +31,7 @@ const AddProductForm = ({ handleGetCategories, onCloseSideDrawer }) => {
     touched,
     handleBlur,
     setFieldValue,
+    resetForm,
   } = useFormik({
     initialValues: {
       name: "",
@@ -55,6 +56,7 @@ const AddProductForm = ({ handleGetCategories, onCloseSideDrawer }) => {
 
       createProduct(formData, (resp) => {
         handleGetCategories();
+        resetForm();
         onCloseSideDrawer();
       });
     },

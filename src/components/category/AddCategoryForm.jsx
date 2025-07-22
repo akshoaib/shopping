@@ -20,6 +20,7 @@ const AddCategoryForm = ({ handleGetCategories, onCloseSideDrawer }) => {
     touched,
     handleBlur,
     handleReset,
+    resetForm,
   } = useFormik({
     initialValues: {
       name: "",
@@ -34,6 +35,7 @@ const AddCategoryForm = ({ handleGetCategories, onCloseSideDrawer }) => {
 
       createCategory(formData, (resp) => {
         handleGetCategories();
+        resetForm();
         onCloseSideDrawer();
       });
     },
