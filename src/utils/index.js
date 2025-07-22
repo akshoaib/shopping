@@ -47,8 +47,6 @@ export const handleApiCall = async (
       }
     }
   } catch (error) {
-    console.log("in catch");
-
     setError(error?.message || errorMessage);
     showToast(error?.message || errorMessage, "error");
     handleFailure(error);

@@ -15,8 +15,6 @@ const AllRoutes = () => {
   const user = useSelector((state) => state.auth.loggedInUser);
   const [newProduct, setNewProduct] = useState(null);
 
-  console.log({ user });
-
   useEffect(() => {
     socket.on("new-product", (product) => {
       setNewProduct(product);

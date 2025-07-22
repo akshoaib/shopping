@@ -23,15 +23,6 @@ const api = axios.create({
 // API request interceptor
 api.interceptors.request.use(
   (config) => {
-    // Get the token from the Redux store
-    // const state = store.getState();
-    // const token = state.auth.token; // Adjust according to your state structure
-    // console.log("token", token);
-    // // If the token exists, add it to the Authorization header
-    // if (token) {
-    //   config.headers.Authorization = `Bearer ${token}`;
-    // }
-
     return config;
   },
   (error) => {
