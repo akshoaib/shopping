@@ -57,4 +57,12 @@ ProductService.rateProduct = async (payload, productId, token) => {
   });
 };
 
+ProductService.deleteProduct = async (productId, token) => {
+  return api.delete(`${url}/delete/${productId}`, {
+    headers: {
+      Authorization: `${token}`,
+    },
+  });
+};
+
 export default ProductService;

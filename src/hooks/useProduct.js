@@ -97,6 +97,18 @@ const useProduct = () => {
     []
   );
 
+  const deleteProduct = useCallback(
+    (productId, handleSuccess) =>
+      createApiCaller(
+        () => ProductService.deleteProduct(productId, token),
+        handleSuccess,
+        true,
+        "Product Deleted Successfully",
+        "Unable to delete product"
+      ),
+    []
+  );
+
   return {
     loading,
     createProduct,
@@ -104,6 +116,7 @@ const useProduct = () => {
     updateProduct,
     getProductById,
     rateProduct,
+    deleteProduct,
   };
 };
 

@@ -5,10 +5,12 @@ import { useParams } from "react-router-dom";
 import CustomImage from "../shared-components/custom-image";
 import { FiEdit } from "react-icons/fi";
 import EditProductModal from "./edit-product-modal";
+import { RiDeleteBinLine } from "react-icons/ri";
+
 import PageLoader from "../shared-components/page-loader";
 
 const Products = () => {
-  const { loading, getProductsByCategory } = useProduct();
+  const { loading, getProductsByCategory, deleteProduct } = useProduct();
   const { categoryId } = useParams();
 
   const [dataState, setDataState] = useState({
@@ -29,6 +31,11 @@ const Products = () => {
   const handleEditProduct = (product) => {
     setIsProductModalOpen(true);
     setSelectedProduct(product);
+  };
+  const handleDeleteProduct = (productId) => {
+    deleteProduct(productId, (resp) => {
+      setDataState({ ...dataState });
+    });
   };
 
   const handleCloseEditProductModal = () => {
@@ -76,7 +83,18 @@ const Products = () => {
       fixed: "right",
       width: 100,
       render: (product) => (
-        <FiEdit onClick={() => handleEditProduct(product)} cursor="pointer" />
+        <span className="d-flex gap-2">
+          <FiEdit
+            onClick={() => handleEditProduct(product)}
+            cursor="pointer"
+            size={18}
+          />
+          <RiDeleteBinLine
+            onClick={() => handleDeleteProduct(product?._id)}
+            cursor="pointer"
+            size={19}
+          />
+        </span>
       ),
     },
   ];

@@ -26,6 +26,7 @@ export const handleApiCall = async (
   setError(null);
   try {
     const resp = await apiFunction();
+
     if (resp.success) {
       handleSuccess(resp.data);
       if (showSuccessMessage) {
