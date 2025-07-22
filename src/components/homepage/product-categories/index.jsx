@@ -12,7 +12,7 @@ const ProductCategories = ({ loading, categories }) => {
       ) : (
         <Row className="w-100 justify-content-around justify-content-md-center">
           {categories?.map((category) => (
-            <Col xs={9} md={4}>
+            <Col xs={9} md={4} key={category._id}>
               <div key={category.id} className="">
                 <div
                   onClick={() =>

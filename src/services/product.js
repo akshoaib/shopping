@@ -23,8 +23,6 @@ ProductService.getProductsByCategory = async (body, token) => {
   let name = localStorage.getItem("name");
   let tags = localStorage.getItem("tags");
 
-  console.log({ storageItem });
-
   if (storageItem) {
     return api.post(
       `${url}/get-all?id=${storageItem}&name=${name}&tags=${tags}`,

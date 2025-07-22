@@ -26,7 +26,18 @@ const AllRoutes = () => {
       socket.off("new-product");
     };
   }, []);
-  console.log({ newProduct });
+
+  useEffect(() => {
+    let timer;
+    if (newProduct) {
+      timer = setTimeout(() => {
+        setNewProduct(null);
+      }, 6000);
+    }
+    return () => {
+      if (timer) clearTimeout(timer);
+    };
+  }, [newProduct]);
 
   return (
     <Router>
