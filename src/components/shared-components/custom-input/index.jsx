@@ -15,7 +15,7 @@ const CustomInput = ({
 }) => {
   return (
     <>
-      {type === "text" ? (
+      {type === "text" || type === "number" ? (
         <>
           <label>{label}</label>
           <Input

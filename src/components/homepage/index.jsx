@@ -9,6 +9,7 @@ import ProductCard from "../shared-components/product-card";
 import PageLoader from "../shared-components/page-loader";
 import { useNavigate } from "react-router-dom";
 import { APP_ROUTES } from "@/config/app-routes";
+import FiltersBar from "./filters-bar";
 const Homepage = () => {
   const { loading, getProductsByCategory } = useProduct();
   const { loading: categoryLoading, getCategories } = useCategory();
@@ -17,7 +18,9 @@ const Homepage = () => {
   const [products, setProducts] = useState([]);
   const [categories, setCategories] = useState([]);
 
-  const fetchSearchData = (body) => {
+  const [filterValues, setFilterValues] = useState(null);
+
+  const fetchSearchData = (body = {}) => {
     getProductsByCategory(body, (resp) => {
       setProducts(resp.products);
     });
@@ -28,8 +31,8 @@ const Homepage = () => {
   };
 
   useEffect(() => {
-    fetchSearchData();
-  }, []);
+    fetchSearchData(filterValues);
+  }, [filterValues]);
   return (
     <>
       <PageLoader loading={categoryLoading || loading} />
@@ -43,7 +46,13 @@ const Homepage = () => {
             loading={categoryLoading}
           />
         </Col>
-        <Col span={24} className="p-2 p-lg-4">
+        <Col span={4} className="p-2 p-lg-4 border">
+          <FiltersBar
+            categories={categories}
+            setFilterValues={setFilterValues}
+          />
+        </Col>
+        <Col span={20} className="p-2 p-lg-4">
           <Row gutter={[16, 16]} className="mb-4">
             {products.map((product) => {
               return (
