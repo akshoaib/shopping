@@ -9,18 +9,18 @@ const Price = ({ values, handleChange }) => {
       <Row gutter={[16, 16]}>
         <Col span={8}>
           <CustomInput
-            label="Start Price"
-            name="startPrice"
-            value={values.startPrice}
+            label="Min"
+            name="minPrice"
+            value={values.minPrice}
             handleChange={handleChange}
             type="number"
           />
         </Col>
         <Col span={8}>
           <CustomInput
-            label="End Price"
-            name="endPrice"
-            value={values.endPrice}
+            label="Max"
+            name="maxPrice"
+            value={values.maxPrice}
             handleChange={handleChange}
             type="number"
           />

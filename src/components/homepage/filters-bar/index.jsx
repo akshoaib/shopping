@@ -17,8 +17,8 @@ const FiltersBar = ({ categories, setFilterValues }) => {
   } = useFormik({
     initialValues: {
       rating: [],
-      startPrice: null,
-      endPrice: null,
+      minPrice: null,
+      maxPrice: null,
       categories: [],
       availability: [],
     },

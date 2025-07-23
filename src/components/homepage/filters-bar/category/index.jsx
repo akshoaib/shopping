@@ -18,7 +18,7 @@ const Category = ({ values, handleChange, categories }) => {
         <Row>
           {categories.map((category) => (
             <Col span={24} key={category.id}>
-              <Checkbox value={category.name}>{category.name}</Checkbox>
+              <Checkbox value={category._id}>{category.name}</Checkbox>
             </Col>
           ))}
           {/* <Col span={8}>
