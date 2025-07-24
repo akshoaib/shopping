@@ -151,8 +151,8 @@ const Products = () => {
   });
 
   useEffect(() => {
-    fetchSearchData(defaultBody({}));
-  }, [dataState]);
+    fetchSearchData(defaultBody({ ...values }));
+  }, [dataState, values]);
   return (
     <>
       <PageLoader loading={loading} />

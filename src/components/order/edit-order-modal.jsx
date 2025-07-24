@@ -14,6 +14,9 @@ const EditOrderModal = ({
   selectedOrder,
   dataState,
   setDataState,
+  handleGetDropdowns,
+  orderStatusDropdown,
+  paymentStatusDropdown,
 }) => {
   const {
     loading,
@@ -22,18 +25,18 @@ const EditOrderModal = ({
     updateOrder,
   } = useOrder();
 
-  const [orderStatusDropdown, setOrderStatusDropdown] = useState([]);
-  const [paymentStatusDropdown, setPaymentStatusDropdown] = useState([]);
+  // const [orderStatusDropdown, setOrderStatusDropdown] = useState([]);
+  // const [paymentStatusDropdown, setPaymentStatusDropdown] = useState([]);
 
-  const handleGetDropdowns = () => {
-    getOrderStatusDropdown((res) => {
-      setOrderStatusDropdown(res.orderStatusDropdown);
-    });
+  // const handleGetDropdowns = () => {
+  //   getOrderStatusDropdown((res) => {
+  //     setOrderStatusDropdown(res.orderStatusDropdown);
+  //   });
 
-    getPaymentStatusDropdown((res) => {
-      setPaymentStatusDropdown(res.paymentStatusDropdown);
-    });
-  };
+  //   getPaymentStatusDropdown((res) => {
+  //     setPaymentStatusDropdown(res.paymentStatusDropdown);
+  //   });
+  // };
 
   const {
     values,
