@@ -3,6 +3,16 @@ import { Checkbox, Col, Row } from "antd";
 import CustomInput from "@/components/shared-components/custom-input";
 
 const Price = ({ values, handleChange }) => {
+  const onPriceChange = (e) => {
+    const { name, value } = e.target;
+
+    handleChange({
+      target: {
+        name: name,
+        value: value,
+      },
+    });
+  };
   return (
     <>
       <h6>Price</h6>
@@ -12,7 +22,7 @@ const Price = ({ values, handleChange }) => {
             label="Min"
             name="minPrice"
             value={values.minPrice}
-            handleChange={handleChange}
+            handleChange={onPriceChange}
             type="number"
           />
         </Col>
@@ -21,7 +31,7 @@ const Price = ({ values, handleChange }) => {
             label="Max"
             name="maxPrice"
             value={values.maxPrice}
-            handleChange={handleChange}
+            handleChange={onPriceChange}
             type="number"
           />
         </Col>

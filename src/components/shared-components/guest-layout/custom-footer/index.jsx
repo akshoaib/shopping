@@ -23,8 +23,8 @@ const CustomFooter = () => {
         <div>
           <h5 className="footer-heading">CUSTOMER CARE</h5>
           <ul className="footer-list">
-            <li>Home</li>
-            <li>Products</li>
+            <li onClick={() => navigate(APP_ROUTES.public.HOME)}>Home</li>
+
             <li onClick={() => navigate(APP_ROUTES.public.BLOG)}>My Blog</li>
           </ul>
         </div>

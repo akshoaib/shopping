@@ -68,12 +68,12 @@ const Order = () => {
       key: "user",
       render: (user) => <>{`${user?.firstName} ${user?.lastName}`}</>,
     },
-    {
-      title: "Location",
-      dataIndex: "address",
-      key: "address",
-      render: (address) => <>{address?.city}</>,
-    },
+    // {
+    //   title: "Location",
+    //   dataIndex: "address",
+    //   key: "address",
+    //   render: (address) => <>{address?.city}</>,
+    // },
     {
       title: "Order Status",
       dataIndex: "orderStatus",

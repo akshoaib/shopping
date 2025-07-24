@@ -31,8 +31,8 @@ const OrderSummary = ({ cart, handlePlaceOrder }) => {
             <p>Total</p>
             <p>{cart?.total}</p>
           </div>
-          <div className="d-flex justify-content-end gap-5  pt-2">
-            <p>Shipping</p>
+          <div className="d-flex justify-content-end gap-2  pt-2 ">
+            <p>Shipping:</p>
             <p>Free</p>
           </div>
           <div className="d-flex justify-content-end gap-5  pt-2">

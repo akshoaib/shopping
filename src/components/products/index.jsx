@@ -8,6 +8,11 @@ import EditProductModal from "./edit-product-modal";
 import { RiDeleteBinLine } from "react-icons/ri";
 
 import PageLoader from "../shared-components/page-loader";
+import { useFormik } from "formik";
+import SideDrawer from "../shared-components/SideDrawer";
+import FiltersBar from "./filters-bar";
+import { Col, Row } from "antd";
+import { CiFilter } from "react-icons/ci";
 
 const Products = () => {
   const { loading, getProductsByCategory, deleteProduct } = useProduct();
@@ -23,6 +28,8 @@ const Products = () => {
 
   const [isProductModalOpen, setIsProductModalOpen] = useState(false);
   const [selectedProduct, setSelectedProduct] = useState(null);
+  const [showFiltersBar, setShowFiltersBar] = useState(false);
+  const [showFilters, setShowFilters] = useState(false);
 
   const handlePageChange = (page) => {
     setDataState({ ...dataState, page });
@@ -120,13 +127,46 @@ const Products = () => {
     });
   };
 
+  const {
+    values,
+    handleChange,
+    handleSubmit,
+    errors,
+    touched,
+    handleBlur,
+    handleReset,
+    resetForm,
+  } = useFormik({
+    initialValues: {
+      name: "",
+      quantity: null,
+      minPrice: null,
+      maxPrice: null,
+      rating: null,
+    },
+    enableReinitialize: true,
+    onSubmit: (values) => {
+      // setFilterValues(values);
+    },
+  });
+
   useEffect(() => {
-    // getProductsByCategory({}, (resp) => {});
     fetchSearchData(defaultBody({}));
   }, [dataState]);
   return (
     <>
       <PageLoader loading={loading} />
+      <SideDrawer
+        open={showFiltersBar}
+        onClose={() => setShowFiltersBar(false)}
+      >
+        <FiltersBar
+          values={values}
+          handleChange={handleChange}
+          handleBlur={handleBlur}
+          touched={touched}
+        />
+      </SideDrawer>
 
       <EditProductModal
         isModalOpen={isProductModalOpen}
@@ -135,6 +175,39 @@ const Products = () => {
         dataState={dataState}
         setDataState={setDataState}
       />
+      <Row>
+        {showFilters && (
+          <Col span={22} className="d-none d-lg-block">
+            <FiltersBar
+              values={values}
+              handleChange={handleChange}
+              handleBlur={handleBlur}
+              touched={touched}
+            />
+          </Col>
+        )}
+        <Col
+          // span={2}
+          className="p-2 p-lg-4 d-flex justify-content-end d-block d-lg-none ms-auto"
+        >
+          <CiFilter
+            cursor="pointer"
+            size={20}
+            onClick={() => setShowFiltersBar(true)}
+          />
+        </Col>
+        <Col
+          span={2}
+          className="p-2 p-lg-4 d-flex justify-content-end d-none d-lg-block ms-auto"
+        >
+          <CiFilter
+            cursor="pointer"
+            size={30}
+            onClick={() => setShowFilters(!showFilters)}
+          />
+        </Col>
+      </Row>
+
       <PaginatedTable
         data={data}
         columns={columns}

@@ -4,6 +4,8 @@ import Categories from "./category";
 import Rating from "./rating";
 import { useFormik } from "formik";
 import { useEffect } from "react";
+import styles from "./filters-bar.module.css";
+
 const FiltersBar = ({ categories, setFilterValues }) => {
   const {
     values,
@@ -30,11 +32,15 @@ const FiltersBar = ({ categories, setFilterValues }) => {
   console.log({ values });
 
   useEffect(() => {
-    setFilterValues(values);
+    const handler = setTimeout(() => {
+      setFilterValues(values);
+    }, 400);
+
+    return () => clearTimeout(handler);
   }, [values]);
 
   return (
-    <div className="d-flex flex-column gap-3">
+    <div className={`d-flex flex-column gap-3`}>
       <Availability values={values} handleChange={handleChange} />
       <Price values={values} handleChange={handleChange} />
       <Categories

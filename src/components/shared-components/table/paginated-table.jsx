@@ -16,6 +16,7 @@ const PaginatedTable = ({
         <Table
           dataSource={data?.data}
           columns={columns}
+          scroll={{ x: "max-content" }}
           pagination={{
             pageSize: 10,
             current: currentPage,
