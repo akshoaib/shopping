@@ -13,6 +13,7 @@ import SideDrawer from "../shared-components/SideDrawer";
 import FiltersBar from "./filters-bar";
 import { Col, Row } from "antd";
 import { CiFilter } from "react-icons/ci";
+import { VscClearAll } from "react-icons/vsc";
 
 const Products = () => {
   const { loading, getProductsByCategory, deleteProduct } = useProduct();
@@ -139,7 +140,7 @@ const Products = () => {
   } = useFormik({
     initialValues: {
       name: "",
-      quantity: null,
+      availability: [],
       minPrice: null,
       maxPrice: null,
       rating: null,
@@ -165,6 +166,7 @@ const Products = () => {
           handleChange={handleChange}
           handleBlur={handleBlur}
           touched={touched}
+          handleReset={handleReset}
         />
       </SideDrawer>
 
@@ -183,6 +185,7 @@ const Products = () => {
               handleChange={handleChange}
               handleBlur={handleBlur}
               touched={touched}
+              handleReset={handleReset}
             />
           </Col>
         )}
@@ -197,7 +200,7 @@ const Products = () => {
           />
         </Col>
         <Col
-          span={2}
+          span={1}
           className="p-2 p-lg-4 d-flex justify-content-end d-none d-lg-block ms-auto"
         >
           <CiFilter
@@ -205,6 +208,12 @@ const Products = () => {
             size={30}
             onClick={() => setShowFilters(!showFilters)}
           />
+        </Col>
+        <Col
+          span={1}
+          className=" d-flex justify-content-center align-items-center"
+        >
+          <VscClearAll cursor="pointer" size={20} onClick={handleReset} />
         </Col>
       </Row>
 

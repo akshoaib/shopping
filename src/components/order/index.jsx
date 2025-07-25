@@ -223,7 +223,7 @@ const Order = () => {
       </SideDrawer>
       <Row>
         {showFilters && (
-          <Col span={20} className="d-none d-lg-block">
+          <Col span={18} className="d-none d-lg-block">
             <FiltersBar
               values={values}
               handleChange={handleChange}
@@ -245,14 +245,19 @@ const Order = () => {
           />
         </Col>
         <Col
-          span={3}
-          className="p-2 p-lg-4 d-flex justify-content-end d-none d-lg-block ms-auto"
+          span={1}
+          className="p-2 p-lg-4 d-flex justify-content-center d-none d-lg-block ms-auto"
         >
           <CiFilter
             cursor="pointer"
             size={30}
             onClick={() => setShowFilters(!showFilters)}
           />
+        </Col>
+        <Col
+          span={1}
+          className=" d-flex justify-content-center align-items-center"
+        >
           <VscClearAll cursor="pointer" size={20} onClick={handleReset} />
         </Col>
       </Row>

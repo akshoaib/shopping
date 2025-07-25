@@ -1,31 +1,30 @@
-import { Col, Row } from "antd";
+import { Checkbox, Col, Row } from "antd";
 import CustomInput from "@/components/shared-components/custom-input";
 import CustomSelect from "@/components/shared-components/custom-select";
+import { VscClearAll } from "react-icons/vsc";
 
-const FiltersBar = ({ values, handleChange, handleBlur, touched }) => {
-  console.log({ values });
-
-  const quantityDropdown = [
-    {
-      name: "out of stock",
-      _id: 0,
-    },
-    {
-      name: "in stock stock",
-      _id: 1,
-    },
-    {
-      name: "less than 10",
-      _id: 9,
-    },
-    {
-      name: "greater than 10",
-      _id: 10,
-    },
-  ];
+const FiltersBar = ({
+  values,
+  handleChange,
+  handleBlur,
+  touched,
+  handleReset,
+}) => {
+  const onStockChange = (checkedValues) => {
+    handleChange({
+      target: {
+        name: "availability",
+        value: checkedValues,
+      },
+    });
+  };
 
   return (
     <Row gutter={[16, 16]}>
+      <Col className="d-block d-lg-none ms-auto">
+        {" "}
+        <VscClearAll size={20} onClick={handleReset} />
+      </Col>
       <Col xs={24} lg={4}>
         <CustomInput
           name="name"
@@ -35,14 +34,16 @@ const FiltersBar = ({ values, handleChange, handleBlur, touched }) => {
         />
       </Col>
       <Col xs={24} lg={4}>
-        <CustomSelect
-          data={quantityDropdown}
-          label="Quantity"
-          name="quantity"
-          value={values.quantity}
-          onBlur={handleBlur}
-          handleChange={handleChange}
-        />
+        <Checkbox.Group style={{ width: "100%" }} onChange={onStockChange}>
+          <Row>
+            <Col span={24}>
+              <Checkbox value={true}>In Stock</Checkbox>
+            </Col>
+            <Col span={24}>
+              <Checkbox value={false}>Out of Stock</Checkbox>
+            </Col>
+          </Row>
+        </Checkbox.Group>
       </Col>
       <Col xs={24} lg={4}>
         <CustomInput
