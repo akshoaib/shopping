@@ -34,9 +34,9 @@ const useOrder = () => {
     );
 
   const getAllOrders = useCallback(
-    (limit, page, handleSuccess) =>
+    (params, handleSuccess) =>
       createApiCaller(
-        () => OrderService.getAllOrders(limit, page, token),
+        () => OrderService.getAllOrders(params, token),
         handleSuccess,
         false,
         "",

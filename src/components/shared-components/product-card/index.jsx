@@ -29,6 +29,10 @@ const ProductCard = ({ product }) => {
               alt={product.name}
               className="rounded"
             />
+
+            {product?.quantity == 0 && (
+              <div className={`rounded ${styles.outOfStock}`}>out of stock</div>
+            )}
             <div
               className={styles.cartIcon}
               onClick={(e) => {

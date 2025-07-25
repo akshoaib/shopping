@@ -6,6 +6,12 @@ import useOrder from "@/hooks/useOrder";
 import EditOrderModal from "./edit-order-modal";
 import CustomBadge from "../shared-components/custom-badge";
 import { OrderTypes, PaymentTypes } from "@/constants";
+import SideDrawer from "../shared-components/SideDrawer";
+import { useFormik } from "formik";
+import FiltersBar from "./filters-bar";
+import { Col, Row } from "antd";
+import { CiFilter } from "react-icons/ci";
+import { VscClearAll } from "react-icons/vsc";
 
 const Order = () => {
   const { loading, getAllOrders } = useOrder();
@@ -21,6 +27,28 @@ const Order = () => {
 
   const [isOrderModalOpen, setIsOrderModalOpen] = useState(false);
   const [selectedOrder, setSelectedOrder] = useState(null);
+  const [showFiltersBar, setShowFiltersBar] = useState(false);
+  const [showFilters, setShowFilters] = useState(false);
+
+  const {
+    loading: dropDownsLoading,
+    getOrderStatusDropdown,
+    getPaymentStatusDropdown,
+    updateOrder,
+  } = useOrder();
+
+  const [orderStatusDropdown, setOrderStatusDropdown] = useState([]);
+  const [paymentStatusDropdown, setPaymentStatusDropdown] = useState([]);
+
+  const handleGetDropdowns = () => {
+    getOrderStatusDropdown((res) => {
+      setOrderStatusDropdown(res.orderStatusDropdown);
+    });
+
+    getPaymentStatusDropdown((res) => {
+      setPaymentStatusDropdown(res.paymentStatusDropdown);
+    });
+  };
 
   const OrderStatusBg = {
     1: "rgb(255 165 0 / 21%)",
@@ -68,12 +96,12 @@ const Order = () => {
       key: "user",
       render: (user) => <>{`${user?.firstName} ${user?.lastName}`}</>,
     },
-    {
-      title: "Location",
-      dataIndex: "address",
-      key: "address",
-      render: (address) => <>{address?.city}</>,
-    },
+    // {
+    //   title: "Location",
+    //   dataIndex: "address",
+    //   key: "address",
+    //   render: (address) => <>{address?.city}</>,
+    // },
     {
       title: "Order Status",
       dataIndex: "orderStatus",
@@ -130,19 +158,43 @@ const Order = () => {
   };
 
   const fetchSearchData = (body) => {
-    const { limit, page } = body;
+    // const { limit, page, customer_name, paymentStatus, orderStatus, total } =
+    //   body;
 
-    getAllOrders(limit, page, (resp) => {
+    getAllOrders(body, (resp) => {
       setData({
         data: resp.orders,
         total: resp.total,
       });
     });
+    setShowFiltersBar(false);
   };
 
+  const {
+    values,
+    handleChange,
+    handleSubmit,
+    errors,
+    touched,
+    handleBlur,
+    handleReset,
+    resetForm,
+  } = useFormik({
+    initialValues: {
+      customer_name: "",
+      paymentStatus: 0,
+      orderStatus: 0,
+      total: 0,
+    },
+    enableReinitialize: true,
+    onSubmit: (values) => {
+      // setFilterValues(values);
+    },
+  });
+
   useEffect(() => {
-    fetchSearchData(defaultBody({}));
-  }, [dataState]);
+    fetchSearchData(defaultBody({ ...values }));
+  }, [dataState, values]);
   return (
     <>
       <EditOrderModal
@@ -151,7 +203,65 @@ const Order = () => {
         selectedOrder={selectedOrder}
         dataState={dataState}
         setDataState={setDataState}
+        handleGetDropdowns={handleGetDropdowns}
+        orderStatusDropdown={orderStatusDropdown}
+        paymentStatusDropdown={paymentStatusDropdown}
       />
+      <SideDrawer
+        open={showFiltersBar}
+        onClose={() => setShowFiltersBar(false)}
+      >
+        <FiltersBar
+          values={values}
+          handleChange={handleChange}
+          handleBlur={handleBlur}
+          touched={touched}
+          paymentStatusDropdown={paymentStatusDropdown}
+          orderStatusDropdown={orderStatusDropdown}
+          handleReset={handleReset}
+        />
+      </SideDrawer>
+      <Row>
+        {showFilters && (
+          <Col span={18} className="d-none d-lg-block">
+            <FiltersBar
+              values={values}
+              handleChange={handleChange}
+              handleBlur={handleBlur}
+              touched={touched}
+              paymentStatusDropdown={paymentStatusDropdown}
+              orderStatusDropdown={orderStatusDropdown}
+            />
+          </Col>
+        )}
+        <Col
+          // span={2}
+          className="p-2 p-lg-4 d-flex justify-content-end d-block d-lg-none ms-auto"
+        >
+          <CiFilter
+            cursor="pointer"
+            size={20}
+            onClick={() => setShowFiltersBar(true)}
+          />
+        </Col>
+        <Col
+          span={1}
+          className="p-2 p-lg-4 d-flex justify-content-center d-none d-lg-block ms-auto"
+        >
+          <CiFilter
+            cursor="pointer"
+            size={30}
+            onClick={() => setShowFilters(!showFilters)}
+          />
+        </Col>
+        <Col
+          span={1}
+          className=" d-flex justify-content-center align-items-center"
+        >
+          <VscClearAll cursor="pointer" size={20} onClick={handleReset} />
+        </Col>
+      </Row>
+
       <PaginatedTable
         data={data}
         columns={columns}

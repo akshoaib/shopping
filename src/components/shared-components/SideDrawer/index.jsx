@@ -1,20 +1,15 @@
-import { Button, Drawer } from "antd";
-import { useState } from "react";
-import CustomButton from "../custom-button";
+import { Drawer } from "antd";
 
-const SideDrawer = ({ title, onClose, open, children }) => {
-  //   const [open, setOpen] = useState(false);
-
-  //   const showDrawer = () => {
-  //     setOpen(true);
-  //   };
-
-  //   const onClose = () => {
-  //     setOpen(false);
-  //   };
+const SideDrawer = ({
+  title,
+  onClose,
+  open,
+  children,
+  placement = "right",
+}) => {
   return (
     <>
-      <Drawer title={title} onClose={onClose} open={open}>
+      <Drawer title={title} onClose={onClose} open={open} placement={placement}>
         {children}
       </Drawer>
     </>

@@ -2,12 +2,19 @@ import api from "@/interceptors";
 const url = "/order";
 const OrderService = {};
 
-OrderService.getAllOrders = async (limit, page, token) => {
-  return api.get(`${url}/get-all?limit=${limit}&page=${page}`, {
-    headers: {
-      Authorization: `${token}`,
-    },
-  });
+OrderService.getAllOrders = async (body, token) => {
+  console.log({ body });
+  const { limit, page, customer_name, paymentStatus, orderStatus, total } =
+    body;
+
+  return api.get(
+    `${url}/get-all?limit=${limit}&page=${page}&customer_name=${customer_name}&paymentStatus=${paymentStatus}&orderStatus=${orderStatus}&total=${total}`,
+    {
+      headers: {
+        Authorization: `${token}`,
+      },
+    }
+  );
 };
 
 OrderService.getUserOrders = async (token) => {

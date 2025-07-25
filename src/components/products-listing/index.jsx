@@ -12,7 +12,7 @@ const ProductsListing = () => {
 
   const fetchSearchData = (categoryId) => {
     let payload = {
-      category: categoryId,
+      categories: categoryId ? [categoryId] : [],
     };
 
     getProductsByCategory(payload, (resp) => {
