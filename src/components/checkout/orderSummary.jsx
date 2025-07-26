@@ -35,6 +35,10 @@ const OrderSummary = ({ cart, handlePlaceOrder }) => {
             <p>Shipping:</p>
             <p>Free</p>
           </div>
+          <div className="d-flex justify-content-end gap-2  pt-2 ">
+            <p>Payment:</p>
+            <p>COD</p>
+          </div>
           <div className="d-flex justify-content-end gap-5  pt-2">
             <CustomButton
               title={"Complete Order"}
