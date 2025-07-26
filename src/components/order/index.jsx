@@ -151,8 +151,8 @@ const Order = () => {
   const defaultBody = (values) => {
     return {
       ...body,
-      ...values,
       ...dataState,
+      ...values,
       limit: 10,
     };
   };
@@ -194,7 +194,17 @@ const Order = () => {
 
   useEffect(() => {
     fetchSearchData(defaultBody({ ...values }));
-  }, [dataState, values]);
+  }, [dataState]);
+
+  useEffect(() => {
+    // setDataState({ ...dataState, page: 1 });
+
+    const handler = setTimeout(() => {
+      fetchSearchData(defaultBody({ ...values, page: 1 }));
+    }, 400);
+
+    return () => clearTimeout(handler);
+  }, [values]);
   return (
     <>
       <EditOrderModal

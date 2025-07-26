@@ -113,8 +113,9 @@ const Products = () => {
   const defaultBody = (values) => {
     return {
       ...body,
-      ...values,
       ...dataState,
+      ...values,
+      categories: [categoryId],
       limit: 10,
     };
   };
@@ -153,7 +154,16 @@ const Products = () => {
 
   useEffect(() => {
     fetchSearchData(defaultBody({ ...values }));
-  }, [dataState, values]);
+  }, [dataState]);
+
+  useEffect(() => {
+    const handler = setTimeout(() => {
+      fetchSearchData(defaultBody({ ...values, page: 1 }));
+    }, 400);
+
+    return () => clearTimeout(handler);
+  }, [values]);
+
   return (
     <>
       <PageLoader loading={loading} />
@@ -222,6 +232,7 @@ const Products = () => {
         columns={columns}
         handlePageChange={handlePageChange}
         loading={loading}
+        currentPage={dataState.page}
       />
     </>
   );
