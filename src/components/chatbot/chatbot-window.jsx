@@ -1,6 +1,7 @@
 import { Col, Row } from "antd";
 import React, { useEffect, useRef, useState } from "react";
 import { IoSend } from "react-icons/io5";
+import LogoImage from "../../assets/logo.png";
 
 const ChatbotWindow = ({
   chat,
@@ -54,12 +55,17 @@ const ChatbotWindow = ({
               >
                 {text.sender}
               </p>
-              <p
-                style={{ background: "#f1f5f9", width: "fit-content" }}
-                className="text-start  text-dark rounded shadow p-2"
-              >
-                {text.receiver}
-              </p>
+              <div className="d-flex gap-1">
+                <span>
+                  <img src={LogoImage} width={20} height={50} />
+                </span>{" "}
+                <p
+                  style={{ background: "#f1f5f9", width: "fit-content" }}
+                  className="text-start  text-dark rounded shadow p-2"
+                >
+                  {text.receiver}
+                </p>
+              </div>
             </div>
           ))}
         <div ref={bottomRef} />
