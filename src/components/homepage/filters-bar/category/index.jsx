@@ -16,8 +16,8 @@ const Category = ({ values, handleChange, categories }) => {
       <h6>Categories</h6>
       <Checkbox.Group style={{ width: "100%" }} onChange={onCategoriesChange}>
         <Row>
-          {categories.map((category) => (
-            <Col span={24} key={category.id}>
+          {categories.map((category, index) => (
+            <Col span={24} key={`${category.id}-${index}`}>
               <Checkbox value={category._id}>{category.name}</Checkbox>
             </Col>
           ))}
