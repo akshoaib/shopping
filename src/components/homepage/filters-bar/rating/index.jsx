@@ -19,8 +19,8 @@ const Rating = ({ values, handleChange }) => {
         <Col span={24}>
           <Checkbox.Group style={{ width: "100%" }} onChange={onRatingChange}>
             {Array.from({ length: 5 }, (_, index1) => (
-              <Col span={24}>
-                <Checkbox key={index1} value={5 - index1}>
+              <Col span={24} key={index1}>
+                <Checkbox value={5 - index1}>
                   {Array.from({ length: 5 }, (_, index2) => (
                     <CiStar
                       key={index2}

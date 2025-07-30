@@ -9,6 +9,7 @@ import ProtectedUserRoutes from "./protected-user-routes";
 import { useEffect, useState } from "react";
 import NewProductAlert from "@/components/new-product-alert";
 import { socket } from "@/services/socket";
+import Chatbot from "@/components/chatbot";
 
 const AllRoutes = () => {
   const token = useSelector((state) => state.auth.token);
@@ -40,6 +41,7 @@ const AllRoutes = () => {
   return (
     <Router>
       <ToastContainer />
+      {user?.role !== "admin" && <Chatbot />}
       {newProduct && user?.role !== "admin" && (
         <NewProductAlert
           title={newProduct.name}
