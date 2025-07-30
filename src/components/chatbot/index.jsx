@@ -3,12 +3,16 @@ import { IoChatbubbleEllipsesOutline } from "react-icons/io5";
 import { MdClose } from "react-icons/md";
 import ChatbotWindow from "./chatbot-window";
 import useChatbot from "@/hooks/useChatbot";
+import { useMediaQuery } from "@/hooks/useMediaQuery";
 
 const Chatbot = () => {
   const [chat, setChat] = useState("");
   const [messages, setMessages] = useState([]);
   const [openChat, setOpenChat] = useState(false);
   const { loading, initiateChat } = useChatbot();
+
+  const isMobile = useMediaQuery("(max-width: 768px)");
+
   // const handleChat = () => {};
   const handleChatbot = () => {
     let senderMessage = chat;
@@ -46,8 +50,8 @@ const Chatbot = () => {
       <div
         style={{
           position: "fixed",
-          left: "90%",
-          top: "90%",
+          left: isMobile ? "80%" : "90%",
+          top: isMobile ? "90%" : "85%",
           background: "black",
           borderRadius: "50%",
           padding: "15px",

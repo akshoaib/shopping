@@ -2,6 +2,7 @@ import { Col, Row } from "antd";
 import React, { useEffect, useRef, useState } from "react";
 import { IoSend } from "react-icons/io5";
 import LogoImage from "../../assets/logo.png";
+import { useMediaQuery } from "@/hooks/useMediaQuery";
 
 const ChatbotWindow = ({
   chat,
@@ -10,6 +11,8 @@ const ChatbotWindow = ({
   messages,
   responseLoading,
 }) => {
+  const isMobile = useMediaQuery("(max-width: 768px)");
+
   const bottomRef = useRef(null);
   const scrollToBottom = () => {
     bottomRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -26,8 +29,8 @@ const ChatbotWindow = ({
     <div
       style={{
         position: "fixed",
-        left: "85%",
-        top: "70%",
+        left: isMobile ? "62%" : "85%",
+        top: isMobile ? "65%" : "60%",
         transform: "translate(-50%, -50%)",
         background: "white",
         height: "350px",
