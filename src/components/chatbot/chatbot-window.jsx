@@ -90,6 +90,11 @@ const ChatbotWindow = ({
           onChange={(e) => handleSetChat(e.target.value)}
           className="form-control"
           placeholder={responseLoading ? "bot is typing..." : ""}
+          onKeyDown={(e) => {
+            if (e.key === "Enter" && !responseLoading) {
+              handleChatbot();
+            }
+          }}
         />
         <IoSend
           size={25}
