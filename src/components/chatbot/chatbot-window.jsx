@@ -30,7 +30,7 @@ const ChatbotWindow = ({
       style={{
         position: "fixed",
         left: isMobile ? "62%" : "85%",
-        top: isMobile ? "65%" : "60%",
+        top: isMobile ? "65%" : "62%",
         transform: "translate(-50%, -50%)",
         background: "white",
         height: "350px",
@@ -42,7 +42,7 @@ const ChatbotWindow = ({
       }}
       className="rounded shadow"
     >
-      <div className="bg-dark py-2 py-lg-2">
+      <div className="bg-dark py-2 py-lg-2 rounded-top">
         <p className="text-light p-0 ps-2  m-0">Ask anything</p>
       </div>
       <div
@@ -79,7 +79,7 @@ const ChatbotWindow = ({
       </div>
 
       <div
-        className="d-flex justify-content-center align-items-center  gap-1 p-2 "
+        className="d-flex justify-content-center align-items-center  gap-1 p-2 rounded-bottom "
         style={{
           backgroundColor: "#fff",
         }}
