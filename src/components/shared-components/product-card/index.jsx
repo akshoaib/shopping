@@ -22,12 +22,9 @@ const ProductCard = ({ product }) => {
             <img
               width={"100%"}
               src={product.images[0]}
-              style={{
-                objectFit: "cover",
-                height: 200,
-              }}
               alt={product.name}
               className="rounded"
+              style={{ aspectRatio: "1/1" }}
             />
 
             {product?.quantity == 0 && (

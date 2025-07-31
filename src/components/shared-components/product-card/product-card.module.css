@@ -2,7 +2,8 @@
   position: relative;
 }
 imageContainer img {
-  height: 400;
+  /* height: 400px; */
+  /* aspect-ratio: 1/1; */
 }
 .cartIcon {
   position: absolute;
@@ -26,6 +27,6 @@ imageContainer img {
 
 @media screen and (max-width: 768px) {
   .imageContainer img {
-    height: 300px;
+    /* height: 300px; */
   }
 }
