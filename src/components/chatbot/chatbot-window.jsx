@@ -42,11 +42,15 @@ const ChatbotWindow = ({
       }}
       className="rounded shadow"
     >
+      <div className="bg-dark py-2 py-lg-2">
+        <p className="text-light p-0 ps-2  m-0">Ask anything</p>
+      </div>
       <div
         style={{
           flex: 1,
           overflowY: "auto",
           padding: "0.5rem",
+          background: "#f5f4f2",
         }}
       >
         {messages?.length > 0 &&
@@ -75,7 +79,7 @@ const ChatbotWindow = ({
       </div>
 
       <div
-        className="d-flex justify-content-center align-items-center gap-1 p-2 border-top"
+        className="d-flex justify-content-center align-items-center  gap-1 p-2 "
         style={{
           backgroundColor: "#fff",
         }}
