@@ -36,7 +36,7 @@ const ProductSlider = ({ products }) => {
         <img
           src="https://www.limelight.pk/cdn/shop/collections/1200x330-festive.jpg?v=1751022688"
           alt={"banner"}
-          height={300}
+          height={400}
           width={"100%"}
           className="w-100 object-fit-cover rounded-3"
         />
@@ -45,7 +45,7 @@ const ProductSlider = ({ products }) => {
         <img
           src="https://www.limelight.pk/cdn/shop/collections/1200x330-sleepware_32140f59-d445-42e5-8f39-74ac64a7a12c.jpg?v=1703148591"
           alt={"banner"}
-          height={300}
+          height={400}
           width={"100%"}
           className="w-100 object-fit-cover rounded-3"
         />
