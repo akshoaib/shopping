@@ -1,12 +1,14 @@
 import { Col, Row } from "antd";
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import ProductCard from "../shared-components/product-card";
 import useProduct from "@/hooks/useProduct";
 import PageLoader from "../shared-components/page-loader";
+import { APP_ROUTES } from "@/config/app-routes";
 
 const ProductsListing = () => {
   const { categoryId } = useParams();
+  const navigate = useNavigate();
   const { loading, getProductsByCategory } = useProduct();
   const [products, setProducts] = useState([]);
 
@@ -37,7 +39,17 @@ const ProductsListing = () => {
           <Row gutter={[16, 16]} className="mb-4">
             {products.map((product) => {
               return (
-                <Col xs={12} md={8} lg={6} xl={4}>
+                <Col
+                  xs={12}
+                  md={8}
+                  lg={6}
+                  xl={4}
+                  role="button"
+                  key={`${product._id}`}
+                  onClick={() =>
+                    navigate(APP_ROUTES.public.VIEW_PRODUCT(product._id))
+                  }
+                >
                   <ProductCard product={product} />
                 </Col>
               );
