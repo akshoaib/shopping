@@ -34,7 +34,7 @@ const ProductSlider = ({ products }) => {
       })} */}
       <SwiperSlide>
         <img
-          src="https://www.limelight.pk/cdn/shop/collections/SIGNATURE_EMBROIDERED_UNSTITCHED_8c6aeb77-d798-4df1-a7ed-d3e33152349e.jpg?v=1742377387"
+          src="https://www.limelight.pk/cdn/shop/collections/1200x330-festive.jpg?v=1751022688"
           alt={"banner"}
           height={300}
           width={"100%"}
