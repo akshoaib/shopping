@@ -58,10 +58,10 @@ const Signin = () => {
           className="h-50 bg-dark d-flex justify-content-center align-items-center"
         >
           <div onClick={() => navigate(APP_ROUTES.public.HOME)} role="button">
-            <img src={LogoImage} width={200} />
+            <img src={LogoImage} width={400} height={400} />
           </div>
         </Col>
-        <Col span={24} className="px-4 mb-5">
+        <Col xs={24} lg={15} className="px-4 mx-auto mb-5">
           <Row className="mb-5">
             <Col xs={24} md={12} className="mx-auto mb-5">
               <form className="d-flex flex-column" onSubmit={handleSubmit}>

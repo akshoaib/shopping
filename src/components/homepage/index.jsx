@@ -50,7 +50,7 @@ const Homepage = () => {
           />
         </Col>
 
-        <Col span={20} className="p-2 p-lg-4 d-block d-lg-none">
+        <Col span={20} className="p-2 p-lg-4 ">
           <CiFilter size={30} onClick={() => setOpenFilters(true)} />
         </Col>
 
@@ -64,14 +64,14 @@ const Homepage = () => {
             setFilterValues={setFilterValues}
           />
         </SideDrawer>
-        <Col md={4} className="d-none d-lg-block p-2">
+        {/* <Col md={4} className="d-none d-lg-block p-2">
           <FiltersBar
             categories={categories}
             setFilterValues={setFilterValues}
           />
-        </Col>
+        </Col> */}
 
-        <Col xs={24} lg={20} className="p-2 p-lg-4">
+        <Col xs={24} className="p-2 p-lg-4">
           <Row gutter={[16, 16]} className="mb-4">
             {products.map((product) => {
               return (

@@ -10,6 +10,12 @@ body {
   color: red;
   font-size: 12px;
 }
+.roboto-font {
+  font-family: "Roboto", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 700;
+  font-style: italic;
+}
 
 .footer-list {
   padding-left: 0;

@@ -38,13 +38,19 @@ const Header = () => {
             style={{ height: "40px", width: "120px", objectFit: "cover" }}
           />
         </div>
+        <p
+          className="roboto-font m-auto"
+          style={{ letterSpacing: "2px", fontSize: "24px", color: "goldenrod" }}
+        >
+          Wardrobe Wave
+        </p>
         <div className="d-flex gap-2">
           {token ? (
             <p className={styles.headerItem}>
               <RiLogoutBoxLine
                 role="button"
                 size={20}
-                color="#ffffff"
+                style={{ color: "goldenrod" }}
                 onClick={handleLogout}
               />
             </p>
@@ -53,7 +59,7 @@ const Header = () => {
               <LuLogIn
                 role="button"
                 size={20}
-                color="#ffffff"
+                style={{ color: "goldenrod" }}
                 onClick={() => navigate(APP_ROUTES.public.LOGIN)}
               />
             </p>
@@ -64,7 +70,11 @@ const Header = () => {
               onClick={() => navigate(APP_ROUTES.public.CART)}
               className={styles.headerItem}
             >
-              <IoCartOutline role="button" size={25} color="#ffffff" />
+              <IoCartOutline
+                role="button"
+                size={25}
+                style={{ color: "goldenrod" }}
+              />
             </p>
           )}
           {token && (
@@ -72,10 +82,19 @@ const Header = () => {
               onClick={() => navigate(APP_ROUTES.private_customer.USER_ORDERS)}
               className={styles.headerItem}
               role="button"
+              style={{ color: "goldenrod" }}
             >
               Orders
             </p>
           )}
+          <p
+            onClick={() => navigate(APP_ROUTES.public.ABOUT)}
+            className={styles.headerItem}
+            role="button"
+            style={{ color: "goldenrod" }}
+          >
+            About Us
+          </p>
         </div>
       </div>
     </>
