@@ -30,7 +30,7 @@ const ChatbotWindow = ({
       style={{
         position: "fixed",
         left: isMobile ? "62%" : "85%",
-        top: isMobile ? "65%" : "62%",
+        top: isMobile ? "65%" : "57%",
         transform: "translate(-50%, -50%)",
         background: "white",
         height: "350px",
