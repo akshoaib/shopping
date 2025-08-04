@@ -43,6 +43,8 @@ const Homepage = () => {
         <Col span={24} className="p-2 p-lg-4">
           <ProductSlider products={products} />
         </Col>
+        <h2 className="text-center d-block mx-auto my-2">Categories</h2>
+
         <Col span={24} className={`p-lg-4 ${styles.productsListingHeader}`}>
           <ProductCategories
             categories={categories}
@@ -50,8 +52,16 @@ const Homepage = () => {
           />
         </Col>
 
-        <Col span={20} className="p-2 p-lg-4 ">
-          <CiFilter size={30} onClick={() => setOpenFilters(true)} />
+        <Col span={20} className="p-2 p-lg-4">
+          {/* <CiFilter size={30} onClick={() => setOpenFilters(true)} /> */}
+          <span
+            className="d-flex align-items-center"
+            onClick={() => setOpenFilters(true)}
+            role="button"
+          >
+            <CiFilter size={30} />
+            Filters
+          </span>
         </Col>
 
         <SideDrawer

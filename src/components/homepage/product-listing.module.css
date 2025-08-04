@@ -1,8 +1,8 @@
-.productsListingHeader{
-    background-color: #ffece3;
-    font-size: 24px;
-    padding: 40px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.productsListingHeader {
+  background-color: #daa5209e;
+  font-size: 24px;
+  padding: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

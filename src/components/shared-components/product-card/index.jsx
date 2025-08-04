@@ -41,8 +41,8 @@ const ProductCard = ({ product }) => {
             </div>
           </div>
           <div>
-            <h6>{product.name}</h6>
-            <p>Rs. {product.price}</p>
+            <p style={{ fontWeight: "500", margin: "0" }}>{product.name}</p>
+            <p style={{ margin: "0" }}>Rs. {product.price}</p>
           </div>
         </div>
       </div>

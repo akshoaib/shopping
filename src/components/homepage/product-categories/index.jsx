@@ -27,7 +27,7 @@ const ProductCategories = ({ loading, categories }) => {
                     height={130}
                     className="rounded-circle mx-auto"
                   />
-                  <p className="text-center">{category.name}</p>
+                  <p className="text-center fw-bold ">{category.name}</p>
                 </div>
               </div>
             </Col>
