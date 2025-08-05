@@ -51,8 +51,8 @@ const Chatbot = () => {
       <div
         style={{
           position: "fixed",
-          left: isMobile ? "80%" : "90%",
-          top: isMobile ? "90%" : "80%",
+          left: isMobile ? "70%" : "90%",
+          top: isMobile ? "85%" : "80%",
           // background: "white",
           borderRadius: "50%",
           padding: "10px",
