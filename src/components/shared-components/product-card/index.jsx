@@ -21,10 +21,12 @@ const ProductCard = ({ product }) => {
           <div className={styles.imageContainer}>
             <img
               width={"100%"}
+              height={300}
               src={product.images[0]}
               alt={product.name}
-              className="rounded"
-              style={{ aspectRatio: "1/1" }}
+              className="rounded object-fit-cover object-fit-lg-fill"
+              // style={{ aspectRatio: "1/1" }}
+              // style={{ objectFit: "cover" }}
             />
 
             {product?.quantity == 0 && (
