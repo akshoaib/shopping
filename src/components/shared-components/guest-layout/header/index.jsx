@@ -39,7 +39,7 @@ const Header = () => {
           />
         </div>
         <p
-          className="roboto-font m-auto"
+          className="roboto-font m-auto d-none d-lg-block"
           style={{ letterSpacing: "2px", fontSize: "24px", color: "goldenrod" }}
         >
           Wardrobe Wave
@@ -89,7 +89,7 @@ const Header = () => {
           )}
           <p
             onClick={() => navigate(APP_ROUTES.public.ABOUT)}
-            className={styles.headerItem}
+            className={`${styles.headerItem} d-none d-lg-block`}
             role="button"
             style={{ color: "goldenrod" }}
           >
