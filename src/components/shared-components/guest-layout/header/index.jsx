@@ -5,6 +5,7 @@ import { APP_ROUTES } from "@/config/app-routes";
 import { LuLogIn } from "react-icons/lu";
 import { useDispatch, useSelector } from "react-redux";
 import { persistor } from "@/store";
+import { FaUser } from "react-icons/fa";
 import { setLoggedinUser, setToken } from "@/reducers/authSlice";
 import { RiLogoutBoxLine } from "react-icons/ri";
 import LogoImage from "../../../../assets/logo.png";
@@ -39,12 +40,16 @@ const Header = () => {
           />
         </div>
         <p
-          className="roboto-font m-auto d-none d-lg-block"
-          style={{ letterSpacing: "2px", fontSize: "24px", color: "goldenrod" }}
+          className=" roboto-font m-auto d-none d-lg-block"
+          style={{
+            letterSpacing: "2px",
+            fontSize: "24px",
+            color: "goldenrod",
+          }}
         >
           Wardrobe Wave
         </p>
-        <div className="d-flex gap-2">
+        <div className="d-flex gap-2 gap-lg-3">
           {token ? (
             <p className={styles.headerItem}>
               <RiLogoutBoxLine
@@ -56,7 +61,7 @@ const Header = () => {
             </p>
           ) : (
             <p className={styles.headerItem}>
-              <LuLogIn
+              <FaUser
                 role="button"
                 size={20}
                 style={{ color: "goldenrod" }}
