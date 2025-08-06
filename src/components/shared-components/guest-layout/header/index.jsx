@@ -47,7 +47,7 @@ const Header = () => {
             color: "goldenrod",
           }}
         >
-          Wardrobe Wave
+          WardrobeWave
         </p>
         <div className="d-flex gap-2 gap-lg-3">
           {token ? (
